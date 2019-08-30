@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import i18n from './nuxt-i18n.config'
 
 export default {
   mode: 'spa',
@@ -44,6 +45,7 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    ['nuxt-i18n', i18n]
   ],
   /*
   ** vuetify module configuration
