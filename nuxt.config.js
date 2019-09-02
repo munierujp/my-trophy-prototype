@@ -15,7 +15,8 @@ export default {
       { hid: 'description', name: 'description', content: lang.APP_DESCRIPTION }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Roboto&display=swap' }
     ]
   },
   /*
