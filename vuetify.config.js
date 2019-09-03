@@ -7,9 +7,10 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   customVariables: ['~/assets/variables.scss'],
   theme: {
+    dark: false,
     themes: {
-      dark: {
-        primary: colors.blue.darken2,
+      light: {
+        primary: colors.orange.darken4,
         accent: colors.grey.darken3,
         secondary: colors.amber.darken3,
         info: colors.teal.lighten1,
