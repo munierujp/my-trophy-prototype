@@ -1,6 +1,7 @@
 import Vuex from 'vuex'
 import signInByGoogle from '~/modules/signInByGoogle'
 import signOut from '~/modules/signOut'
+import fetchAuth from '~/modules/fetchAuth'
 
 export default function () {
   return new Vuex.Store({
@@ -18,6 +19,12 @@ export default function () {
     actions: {
       nuxtClientInit ({ commit }, context) {
         // Write initialization of client here
+      },
+      async fetchAuth ({ commit }) {
+        const auth = await fetchAuth()
+        if (auth) {
+          commit('setAuth', auth)
+        }
       },
       async signInByGoogle ({ commit }) {
         const auth = await signInByGoogle()
