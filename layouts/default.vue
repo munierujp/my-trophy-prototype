@@ -18,3 +18,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+#app {
+  font-family: Roboto, "Noto Sans JP", sans-serif;
+}
+</style>
