@@ -2,7 +2,10 @@
   <v-app id="app">
     <app-header />
     <v-content>
-      <v-container fluid>
+      <v-container
+        fluid
+        grid-list-xl
+      >
         <nuxt />
       </v-container>
     </v-content>
