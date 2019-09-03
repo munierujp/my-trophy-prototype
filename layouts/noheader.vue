@@ -4,6 +4,7 @@
       <v-container
         fluid
         grid-list-xl
+        class="fill-height"
       >
         <nuxt />
       </v-container>
