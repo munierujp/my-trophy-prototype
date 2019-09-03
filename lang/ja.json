@@ -4,6 +4,7 @@
   "CLOSE": "閉じる",
   "LOG_IN": "ログイン",
   "LOG_IN_DIALOG_TITLE": "ログイン",
+  "LOG_IN_DIALOG_MESSAGE": "Googleアカウントでログインしてください。",
   "LOG_IN_WITH_GOOGLE": "Googleアカウントでログイン",
   "LOG_OUT": "ログアウト",
   "START": "はじめる"
