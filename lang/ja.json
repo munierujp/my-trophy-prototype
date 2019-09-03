@@ -2,6 +2,7 @@
   "APP_NAME": "My Trophy",
   "APP_DESCRIPTION": "人生のトロフィーを共有しよう",
   "CLOSE": "閉じる",
+  "LOG_IN": "ログイン",
   "LOG_IN_WITH_GOOGLE": "Googleアカウントでログイン",
   "LOG_OUT": "ログアウト",
   "START": "はじめる"
