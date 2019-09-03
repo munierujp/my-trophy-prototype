@@ -17,8 +17,8 @@ export default function () {
       }
     },
     actions: {
-      nuxtClientInit ({ commit }, context) {
-        // Write initialization of client here
+      async nuxtClientInit ({ dispatch }, context) {
+        await dispatch('fetchAuth')
       },
       async fetchAuth ({ commit }) {
         const auth = await fetchAuth()
