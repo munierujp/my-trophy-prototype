@@ -1,5 +1,6 @@
 import Vuex from 'vuex'
 import signInByGoogle from '~/modules/signInByGoogle'
+import signOut from '~/modules/signOut'
 
 export default function () {
   return new Vuex.Store({
@@ -9,6 +10,9 @@ export default function () {
     mutations: {
       setAuth (state, auth) {
         state.auth = auth
+      },
+      removeAuth (state) {
+        state.auth = null
       }
     },
     actions: {
@@ -20,6 +24,10 @@ export default function () {
         if (auth) {
           commit('setAuth', auth)
         }
+      },
+      async signOut ({ commit }) {
+        await signOut()
+        commit('removeAuth')
       }
     }
   })
