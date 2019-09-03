@@ -40,7 +40,8 @@ export default {
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     '@nuxtjs/stylelint-module',
-    ['@nuxtjs/vuetify', vuetify]
+    ['@nuxtjs/vuetify', vuetify],
+    'nuxt-client-init-module'
   ],
   /*
   ** Nuxt.js modules
