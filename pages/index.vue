@@ -10,26 +10,21 @@
       <app-description />
     </v-flex>
     <v-flex>
-      <app-button
-        :label="$t('START')"
-        color="secondary"
-        dark
-        to="/login"
-      />
+      <app-log-in-button />
     </v-flex>
   </v-layout>
 </template>
 
 <script>
-import AppButton from '~/components/AppButton'
 import AppDescription from '~/components/AppDescription'
+import AppLogInButton from '~/components/AppLogInButton'
 import AppTitle from '~/components/AppTitle'
 
 export default {
   layout: 'noheader',
   components: {
-    AppButton,
     AppDescription,
+    AppLogInButton,
     AppTitle
   }
 }
