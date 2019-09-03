@@ -10,9 +10,9 @@ export default {
     dark: false,
     themes: {
       light: {
-        primary: colors.orange.darken4,
+        primary: colors.orange.base,
         accent: colors.grey.darken3,
-        secondary: colors.amber.darken3,
+        secondary: colors.brown.darken4,
         info: colors.teal.lighten1,
         warning: colors.amber.base,
         error: colors.deepOrange.accent4,
