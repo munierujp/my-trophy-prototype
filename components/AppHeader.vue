@@ -8,7 +8,7 @@
     <v-toolbar-title>
       {{ $t('APP_NAME') }}
     </v-toolbar-title>
-    <template v-if="auth">
+    <template v-if="isSignedIn">
       <v-spacer />
       <v-menu
         bottom
@@ -35,8 +35,8 @@
 <script>
 export default {
   computed: {
-    auth () {
-      return this.$store.state.auth
+    isSignedIn () {
+      return this.$store.getters.isSignedIn
     }
   },
   methods: {
