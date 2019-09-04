@@ -27,8 +27,11 @@ export default function () {
       }
     },
     actions: {
-      async nuxtClientInit ({ dispatch }, context) {
+      async nuxtClientInit ({ state, dispatch }, context) {
         await dispatch('fetchAuth')
+        if (state.auth) {
+          await dispatch('fetchUser')
+        }
       },
       async fetchAuth ({ commit }) {
         const auth = await fetchAuth()
