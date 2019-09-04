@@ -67,10 +67,10 @@ export default {
     close () {
       this.showDialog = false
     },
-    signIn () {
-      this.$store.dispatch('signInByGoogle').then(() => {
-        this.$router.push('/home')
-      })
+    async signIn () {
+      await this.$store.dispatch('signInByGoogle')
+      await this.$store.dispatch('fetchUserOrCreate')
+      this.$router.push('/home')
     }
   }
 }
