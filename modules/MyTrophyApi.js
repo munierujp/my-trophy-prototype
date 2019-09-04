@@ -14,6 +14,10 @@ class MyTrophyApi {
     return new this(api)
   }
 
+  clearToken () {
+    this.api.clearToken()
+  }
+
   async fetchUserById (id) {
     const user = await this.api.get(`/users/${id}`)
     return user
