@@ -1,7 +1,10 @@
 import Vuex from 'vuex'
+import MyTrophyApi from '~/modules/MyTrophyApi'
 import signInByGoogle from '~/modules/signInByGoogle'
 import signOut from '~/modules/signOut'
 import fetchAuth from '~/modules/fetchAuth'
+
+const { API_ORIGIN } = process.env.config
 
 export default function () {
   return new Vuex.Store({
@@ -42,6 +45,14 @@ export default function () {
       async signOut ({ commit }) {
         await signOut()
         commit('removeAuth')
+      },
+      async fetchUser ({ state, commit }) {
+        const { token, email } = state.auth
+        const api = MyTrophyApi.of(this.$axios, API_ORIGIN, token)
+        const user = await api.fetchUserByEmail(email)
+        if (user) {
+          commit('setUser', user)
+        }
       }
     }
   })
