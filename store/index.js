@@ -10,7 +10,8 @@ export default function () {
   return new Vuex.Store({
     state: () => ({
       auth: null,
-      user: null
+      user: null,
+      api: null
     }),
     getters: {
       isSignedIn: (state) => {
@@ -29,6 +30,12 @@ export default function () {
       },
       removeUser (state) {
         state.user = null
+      },
+      setApi (state, api) {
+        state.api = api
+      },
+      removeApi (state) {
+        state.api = null
       }
     },
     actions: {
