@@ -1,6 +1,9 @@
+import fs from 'fs'
 import i18n from './nuxt-i18n.config'
 import vuetify from './vuetify.config'
 import lang from './lang/ja'
+
+const config = loadConfig('./config.json')
 
 export default {
   mode: 'spa',
@@ -58,6 +61,23 @@ export default {
     ** You can extend webpack config here
     */
     extend (config, ctx) {
+    }
+  },
+  env: {
+    config
+  }
+}
+
+function loadConfig (filepath) {
+  try {
+    const data = fs.readFileSync(filepath, 'utf-8')
+    return JSON.parse(data)
+  } catch (ignored) {
+    const {
+      API_ORIGIN
+    } = process.env
+    return {
+      API_ORIGIN
     }
   }
 }
