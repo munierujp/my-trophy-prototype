@@ -1,4 +1,5 @@
 import Vuex from 'vuex'
+import Val from '@js-commons/val'
 import MyTrophyApi from '~/modules/MyTrophyApi'
 import signInByGoogle from '~/modules/signInByGoogle'
 import signOut from '~/modules/signOut'
@@ -10,8 +11,14 @@ export default function () {
   return new Vuex.Store({
     state: () => ({
       auth: null,
-      user: null
+      user: null,
+      api: null
     }),
+    getters: {
+      isSignedIn: (state) => {
+        return state.auth
+      }
+    },
     mutations: {
       setAuth (state, auth) {
         state.auth = auth
@@ -24,12 +31,32 @@ export default function () {
       },
       removeUser (state) {
         state.user = null
+      },
+      setApi (state, api) {
+        state.api = api
+      },
+      removeApi (state) {
+        state.api = null
       }
     },
     actions: {
-      async nuxtClientInit ({ state, dispatch }, context) {
+      async nuxtClientInit ({ dispatch }, context) {
+        await dispatch('initNotRequireApi')
+        await dispatch('initApi')
+        await dispatch('initRequireApi')
+      },
+      initApi ({ state, commit }) {
+        const api = Val.of(state.auth)
+          .map(auth => auth.token)
+          .map(token => MyTrophyApi.of(this.$axios, API_ORIGIN, token))
+          .orGet(() => MyTrophyApi.of(this.$axios, API_ORIGIN))
+        commit('setApi', api)
+      },
+      async initNotRequireApi ({ dispatch }) {
         await dispatch('fetchAuth')
-        if (state.auth) {
+      },
+      async initRequireApi ({ getters, dispatch }) {
+        if (getters.isSignedIn) {
           await dispatch('fetchUser')
         }
       },
@@ -45,23 +72,20 @@ export default function () {
           commit('setAuth', auth)
         }
       },
-      async signOut ({ commit }) {
+      async signOut ({ state, commit }) {
         await signOut()
         commit('removeAuth')
+        state.api.clearToken()
       },
       async fetchUser ({ state, commit }) {
-        const { token, email } = state.auth
-        const api = MyTrophyApi.of(this.$axios, API_ORIGIN, token)
-        const user = await api.fetchUserByEmail(email)
+        const user = await state.api.fetchUserByEmail(state.auth.email)
         if (user) {
           commit('setUser', user)
         }
       },
       async createUser ({ state, commit }) {
-        const { token, email } = state.auth
-        const api = MyTrophyApi.of(this.$axios, API_ORIGIN, token)
-        await api.createUser()
-        const user = await api.fetchUserByEmail(email)
+        await state.api.createUser()
+        const user = await state.api.fetchUserByEmail(state.auth.email)
         if (user) {
           commit('setUser', user)
         } else {
