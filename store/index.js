@@ -32,9 +32,9 @@ export default function () {
       }
     },
     actions: {
-      async nuxtClientInit ({ state, dispatch }, context) {
+      async nuxtClientInit ({ getters, dispatch }, context) {
         await dispatch('fetchAuth')
-        if (state.auth) {
+        if (getters.isSignedIn) {
           await dispatch('fetchUser')
         }
       },

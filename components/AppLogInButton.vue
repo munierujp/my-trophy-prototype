@@ -44,8 +44,8 @@ export default {
     showDialog: false
   }),
   computed: {
-    auth () {
-      return this.$store.state.auth
+    isSignedIn () {
+      return this.$store.getters.isSignedIn
     },
     link () {
       return {
@@ -58,7 +58,7 @@ export default {
   },
   methods: {
     open () {
-      if (this.auth) {
+      if (this.isSignedIn) {
         this.$router.push('/home')
       } else {
         this.showDialog = true
