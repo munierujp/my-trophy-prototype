@@ -19,6 +19,10 @@ class API {
       .orGet(() => new this(axios))
   }
 
+  clearToken () {
+    this.axios.setToken(false)
+  }
+
   async get (path, params) {
     const url = this.toURL(path)
     const resp = await this.axios.$get(url, { params })
