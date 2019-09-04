@@ -6,7 +6,8 @@ import fetchAuth from '~/modules/fetchAuth'
 export default function () {
   return new Vuex.Store({
     state: () => ({
-      auth: null
+      auth: null,
+      user: null
     }),
     mutations: {
       setAuth (state, auth) {
@@ -14,6 +15,12 @@ export default function () {
       },
       removeAuth (state) {
         state.auth = null
+      },
+      setUser (state, user) {
+        state.user = user
+      },
+      removeUser (state) {
+        state.user = null
       }
     },
     actions: {
