@@ -12,6 +12,11 @@ export default function () {
       auth: null,
       user: null
     }),
+    getters: {
+      isSignedIn: (state) => {
+        return state.auth
+      }
+    },
     mutations: {
       setAuth (state, auth) {
         state.auth = auth
