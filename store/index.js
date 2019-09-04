@@ -53,6 +53,17 @@ export default function () {
         if (user) {
           commit('setUser', user)
         }
+      },
+      async createUser ({ state, commit }) {
+        const { token, email } = state.auth
+        const api = MyTrophyApi.of(this.$axios, API_ORIGIN, token)
+        await api.createUser()
+        const user = await api.fetchUserByEmail(email)
+        if (user) {
+          commit('setUser', user)
+        } else {
+          throw new Error('Failed to create user')
+        }
       }
     }
   })
