@@ -29,6 +29,13 @@
           </v-btn>
         </template>
         <v-list>
+          <v-list-item @click="toMyPage">
+            <v-list-item-content>
+              <v-list-item-title>{{ user.name }}</v-list-item-title>
+              <v-list-item-subtitle>{{ user.email }}</v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-divider />
           <v-list-item @click="signOut">
             <v-list-item-title>{{ $t('LOG_OUT') }}</v-list-item-title>
           </v-list-item>
@@ -43,6 +50,9 @@ export default {
   computed: {
     isSignedIn () {
       return this.$store.getters.isSignedIn
+    },
+    user () {
+      return this.$store.state.user
     }
   },
   methods: {
@@ -50,6 +60,9 @@ export default {
       this.$store.dispatch('signOut').then(() => {
         this.$router.push('/')
       })
+    },
+    toMyPage () {
+      this.$router.push(`/user/${this.user.id}`)
     }
   }
 }
