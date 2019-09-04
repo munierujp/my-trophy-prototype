@@ -1,3 +1,3 @@
-export default function (a, b) {
-  return b.id - a.id
+export default function (array) {
+  return array.sort((a, b) => b.id - a.id)
 }
