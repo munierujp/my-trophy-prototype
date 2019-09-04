@@ -40,12 +40,10 @@ export default function () {
       }
     },
     actions: {
-      async nuxtClientInit ({ getters, dispatch }, context) {
+      async nuxtClientInit ({ dispatch }, context) {
         await dispatch('fetchAuth')
         await dispatch('initApi')
-        if (getters.isSignedIn) {
-          await dispatch('fetchUser')
-        }
+        await dispatch('initRequireApi')
       },
       initApi ({ state, commit }) {
         const api = Val.of(state.auth)
@@ -53,6 +51,11 @@ export default function () {
           .map(token => MyTrophyApi.of(this.$axios, API_ORIGIN, token))
           .orGet(() => MyTrophyApi.of(this.$axios, API_ORIGIN))
         commit('setApi', api)
+      },
+      async initRequireApi ({ getters, dispatch }) {
+        if (getters.isSignedIn) {
+          await dispatch('fetchUser')
+        }
       },
       async fetchAuth ({ commit }) {
         const auth = await fetchAuth()
