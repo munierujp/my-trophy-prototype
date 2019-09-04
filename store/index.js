@@ -64,6 +64,12 @@ export default function () {
         } else {
           throw new Error('Failed to create user')
         }
+      },
+      async fetchUserOrCreate ({ state, dispatch }) {
+        await dispatch('fetchUser')
+        if (!state.user) {
+          await dispatch('createUser')
+        }
       }
     }
   })
