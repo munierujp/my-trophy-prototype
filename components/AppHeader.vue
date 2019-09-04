@@ -5,6 +5,12 @@
     color="primary"
     dark
   >
+    <v-btn
+      icon
+      to="/"
+    >
+      <v-icon>mdi-home</v-icon>
+    </v-btn>
     <v-toolbar-title>
       {{ $t('APP_NAME') }}
     </v-toolbar-title>
