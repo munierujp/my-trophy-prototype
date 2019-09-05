@@ -29,16 +29,16 @@
           </v-btn>
         </template>
         <v-list>
-          <v-list-item @click="toMyPage">
-            <v-list-item-content>
-              <v-list-item-title>{{ user.name }}</v-list-item-title>
-              <v-list-item-subtitle>{{ user.email }}</v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
+          <app-list-item
+            :title="user.name"
+            :subtitle="user.email"
+            @click="toMyPage"
+          />
           <v-divider />
-          <v-list-item @click="signOut">
-            <v-list-item-title>{{ $t('LOG_OUT') }}</v-list-item-title>
-          </v-list-item>
+          <app-list-item
+            :title="$t('LOG_OUT')"
+            @click="signOut"
+          />
         </v-list>
       </v-menu>
     </template>
@@ -46,7 +46,12 @@
 </template>
 
 <script>
+import AppListItem from '~/components/AppListItem'
+
 export default {
+  components: {
+    AppListItem
+  },
   computed: {
     isSignedIn () {
       return this.$store.getters.isSignedIn
