@@ -79,6 +79,11 @@ export default function () {
           commit('setAuth', auth)
         }
       },
+      async signIn ({ dispatch }) {
+        await dispatch('signInByGoogle')
+        await dispatch('initApi')
+        await dispatch('fetchUserOrCreate')
+      },
       async signOut ({ state, commit }) {
         await signOut()
         commit('removeAuth')
