@@ -21,10 +21,6 @@
             :label="$t('LOG_IN')"
             @click="signIn"
           />
-          <app-dialog-button
-            :label="$t('CLOSE')"
-            @click="close"
-          />
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -69,6 +65,7 @@ export default {
     },
     async signIn () {
       await this.$store.dispatch('signIn')
+      this.close()
       this.$router.push('/home')
     }
   }
