@@ -4,8 +4,12 @@
     width="320px"
     max-width="100%"
   >
-    <v-card-title primary-title>{{ title }}</v-card-title>
-    <v-card-text>{{ description }}</v-card-text>
+    <v-card-title primary-title>
+      {{ title }}
+    </v-card-title>
+    <v-card-text v-if="description">
+      {{ description }}
+    </v-card-text>
   </v-card>
 </template>
 

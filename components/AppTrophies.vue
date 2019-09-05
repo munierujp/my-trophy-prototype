@@ -9,7 +9,10 @@
       :key="trophy.id"
       class="app-trophy"
     >
-      <app-trophy-card v-bind="trophy" />
+      <app-trophy-card
+        :id="trophy.id"
+        :title="trophy.title"
+      />
     </v-flex>
     <!-- dummy components for layout (align left) -->
     <v-flex
