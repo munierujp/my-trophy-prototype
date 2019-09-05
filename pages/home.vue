@@ -4,19 +4,19 @@
     align-center
   >
     <v-flex>
-      <app-trophies :trophies="trophies" />
+      <app-trophy-list :trophies="trophies" />
     </v-flex>
   </v-layout>
 </template>
 
 <script>
 import sortByIdDesc from '~/modules/sortByIdDesc'
-import AppTrophies from '~/components/AppTrophies'
+import AppTrophyList from '~/components/AppTrophyList'
 
 export default {
   middleware: 'requireAuthenticated',
   components: {
-    AppTrophies
+    AppTrophyList
   },
   async asyncData ({ store, params }) {
     const { api, user } = store.state

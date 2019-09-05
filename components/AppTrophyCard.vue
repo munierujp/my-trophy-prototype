@@ -1,11 +1,28 @@
 <template>
   <v-card
-    :to="path"
-    width="320px"
+    :width="width"
     max-width="100%"
   >
-    <v-card-title primary-title>{{ title }}</v-card-title>
-    <v-card-text>{{ description }}</v-card-text>
+    <v-card-title primary-title>
+      {{ title }}
+    </v-card-title>
+    <v-card-text v-if="description">
+      {{ description }}
+    </v-card-text>
+    <v-card-actions v-if="writable">
+      <v-spacer />
+      <v-btn
+        icon
+        :to="`/edit/${id}`">
+        <v-icon>mdi-square-edit-outline</v-icon>
+      </v-btn>
+      <v-btn
+        icon
+        @click="deleteTrophy"
+      >
+        <v-icon>mdi-delete</v-icon>
+      </v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 
@@ -23,11 +40,19 @@ export default {
     description: {
       type: String,
       default: ''
+    },
+    width: {
+      type: String,
+      required: true
+    },
+    writable: {
+      type: Boolean,
+      default: false
     }
   },
-  computed: {
-    path () {
-      return `/trophy/${this.id}`
+  methods: {
+    deleteTrophy () {
+      // TODO: write code
     }
   }
 }

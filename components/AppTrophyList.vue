@@ -2,14 +2,17 @@
   <v-layout
     justify-space-around
     wrap
-    class="app-trophies"
   >
     <v-flex
       v-for="trophy in trophies"
       :key="trophy.id"
       class="app-trophy"
     >
-      <app-trophy-card v-bind="trophy" />
+      <app-trophy-list-item
+        :to="`/trophy/${trophy.id}`"
+        :title="trophy.title"
+        width="320px"
+      />
     </v-flex>
     <!-- dummy components for layout (align left) -->
     <v-flex
@@ -24,11 +27,11 @@
 </template>
 
 <script>
-import AppTrophyCard from '~/components/AppTrophyCard'
+import AppTrophyListItem from '~/components/AppTrophyListItem'
 
 export default {
   components: {
-    AppTrophyCard
+    AppTrophyListItem
   },
   props: {
     trophies: {
