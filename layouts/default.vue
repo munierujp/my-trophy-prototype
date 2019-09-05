@@ -1,5 +1,6 @@
 <template>
   <v-app id="app">
+    <app-navigation-drawer />
     <app-header />
     <v-content>
       <v-container
@@ -14,10 +15,12 @@
 
 <script>
 import AppHeader from '~/components/AppHeader'
+import AppNavigationDrawer from '~/components/AppNavigationDrawer'
 
 export default {
   components: {
-    AppHeader
+    AppHeader,
+    AppNavigationDrawer
   }
 }
 </script>
