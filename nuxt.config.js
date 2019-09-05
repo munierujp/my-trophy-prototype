@@ -74,10 +74,12 @@ function loadConfig (filepath) {
     return JSON.parse(data)
   } catch (ignored) {
     const {
-      API_ORIGIN
+      API_ORIGIN,
+      TWITTER_ID
     } = process.env
     return {
-      API_ORIGIN
+      API_ORIGIN,
+      TWITTER_ID
     }
   }
 }

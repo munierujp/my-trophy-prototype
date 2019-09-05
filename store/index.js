@@ -12,7 +12,8 @@ export default function () {
     state: () => ({
       auth: null,
       user: null,
-      api: null
+      api: null,
+      drawer: null
     }),
     getters: {
       isSignedIn: (state) => {
@@ -37,6 +38,12 @@ export default function () {
       },
       removeApi (state) {
         state.api = null
+      },
+      setDrawer (state, drawer) {
+        state.drawer = drawer
+      },
+      removeDrawer (state) {
+        state.drawer = null
       }
     },
     actions: {
