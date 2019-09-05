@@ -2,6 +2,7 @@
   <v-btn
     class="app-dialog-button"
     text
+    :color="color"
     @click="click"
   >
     {{ label }}
@@ -14,6 +15,10 @@ export default {
     label: {
       type: String,
       required: true
+    },
+    color: {
+      type: String,
+      default: ''
     }
   },
   methods: {
