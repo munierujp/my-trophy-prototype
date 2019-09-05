@@ -9,7 +9,7 @@
       :key="trophy.id"
       class="app-trophy"
     >
-      <app-trophy-card
+      <app-trophy-list-item
         :to="`/trophy/${trophy.id}`"
         :title="trophy.title"
         width="320px"
@@ -28,11 +28,11 @@
 </template>
 
 <script>
-import AppTrophyCard from '~/components/AppTrophyCard'
+import AppTrophyListItem from '~/components/AppTrophyListItem'
 
 export default {
   components: {
-    AppTrophyCard
+    AppTrophyListItem
   },
   props: {
     trophies: {
