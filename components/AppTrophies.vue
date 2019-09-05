@@ -10,6 +10,7 @@
       class="app-trophy"
     >
       <app-trophy-card
+        :to="`/trophy/${trophy.id}`"
         :id="trophy.id"
         :title="trophy.title"
       />

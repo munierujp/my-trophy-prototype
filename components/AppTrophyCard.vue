@@ -1,6 +1,6 @@
 <template>
   <v-card
-    :to="path"
+    :to="to"
     width="320px"
     max-width="100%"
   >
@@ -27,11 +27,10 @@ export default {
     description: {
       type: String,
       default: ''
-    }
-  },
-  computed: {
-    path () {
-      return `/trophy/${this.id}`
+    },
+    to: {
+      type: String,
+      default: ''
     }
   }
 }
