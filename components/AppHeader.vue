@@ -6,12 +6,6 @@
     dark
   >
     <v-app-bar-nav-icon @click.stop="toggleDrawer" />
-    <v-btn
-      icon
-      to="/"
-    >
-      <v-icon>mdi-home</v-icon>
-    </v-btn>
     <v-toolbar-title>
       {{ $t('APP_NAME') }}
     </v-toolbar-title>
