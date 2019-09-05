@@ -5,6 +5,7 @@
     color="primary"
     dark
   >
+    <v-app-bar-nav-icon @click.stop="toggleDrawer" />
     <v-btn
       icon
       to="/"
@@ -58,9 +59,15 @@ export default {
     },
     user () {
       return this.$store.state.user
+    },
+    drawer () {
+      return this.$store.state.drawer
     }
   },
   methods: {
+    toggleDrawer () {
+      this.$store.commit('setDrawer', !this.drawer)
+    },
     signOut () {
       this.$store.dispatch('signOut').then(() => {
         this.$router.push('/')
