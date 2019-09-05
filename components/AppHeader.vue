@@ -9,40 +9,34 @@
     <v-toolbar-title>
       {{ $t('APP_NAME') }}
     </v-toolbar-title>
-    <v-spacer />
-    <v-menu
-      bottom
-      left
-    >
-      <template v-slot:activator="{ on }">
-        <v-btn
-          icon
-          v-on="on"
-        >
-          <v-icon>mdi-dots-vertical</v-icon>
-        </v-btn>
-      </template>
-      <v-list>
-        <template v-if="isSignedIn">
-          <app-list-item
-            :title="user.name"
-            :subtitle="user.email"
-            @click="toMyPage"
-          />
-          <v-divider />
-          <app-list-item
-            :title="$t('LOG_OUT')"
-            @click="signOut"
-          />
+    <template v-if="isSignedIn">
+      <v-spacer />
+      <v-menu
+        bottom
+        left
+      >
+        <template v-slot:activator="{ on }">
+          <v-btn
+            icon
+            v-on="on"
+          >
+            <v-icon>mdi-dots-vertical</v-icon>
+          </v-btn>
         </template>
-        <template v-else>
-          <app-list-item
-            :title="$t('LOG_IN')"
-            @click="signIn"
-          />
-        </template>
-      </v-list>
-    </v-menu>
+        <v-list>
+            <app-list-item
+              :title="user.name"
+              :subtitle="user.email"
+              @click="toMyPage"
+            />
+            <v-divider />
+            <app-list-item
+              :title="$t('LOG_OUT')"
+              @click="signOut"
+            />
+        </v-list>
+      </v-menu>
+    </template>
   </v-app-bar>
 </template>
 
@@ -67,10 +61,6 @@ export default {
   methods: {
     toggleDrawer () {
       this.$store.commit('setDrawer', !this.drawer)
-    },
-    async signIn () {
-      await this.$store.dispatch('signIn')
-      this.$router.push('/home')
     },
     signOut () {
       this.$store.dispatch('signOut').then(() => {
