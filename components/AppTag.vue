@@ -4,7 +4,7 @@
     :href="href"
     :to="to"
     :target="target"
-    link
+    :link="isLink"
   >
     <v-avatar left>
       <v-icon>{{ icon }}</v-icon>
@@ -39,6 +39,11 @@ export default {
     target: {
       type: String,
       default: ''
+    }
+  },
+  computed: {
+    isLink () {
+      return this.to !== '' || this.href !== ''
     }
   }
 }
