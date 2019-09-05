@@ -13,21 +13,52 @@
       <v-spacer />
       <v-btn
         icon
-        :to="`/edit/${id}`">
+        :to="`/edit/${id}`"
+      >
         <v-icon>mdi-square-edit-outline</v-icon>
       </v-btn>
       <v-btn
         icon
-        @click="deleteTrophy"
+        @click="openDeleteDialog"
       >
         <v-icon>mdi-delete</v-icon>
       </v-btn>
+      <v-dialog
+        v-model="showDeleteDialog"
+        width="320px"
+      >
+        <v-card>
+          <v-card-title>
+            {{ $t('DELETE_DIALOG_TITLE') }}
+          </v-card-title>
+          <v-card-text>
+            {{ $t('DELETE_DIALOG_MESSAGE') }}
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer />
+            <app-dialog-button
+              :label="$t('CANCEL')"
+              @click="closeDeleteDialog"
+            />
+            <app-dialog-button
+              :label="$t('DELETE')"
+              color="red"
+              @click="deleteTrophy"
+            />
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
+import AppDialogButton from '~/components/AppDialogButton'
+
 export default {
+  components: {
+    AppDialogButton
+  },
   props: {
     id: {
       type: Number,
@@ -50,9 +81,25 @@ export default {
       default: false
     }
   },
+  data: () => ({
+    showDeleteDialog: false
+  }),
+  computed: {
+    api () {
+      return this.$store.state.api
+    }
+  },
   methods: {
-    deleteTrophy () {
-      // TODO: write code
+    openDeleteDialog () {
+      this.showDeleteDialog = true
+    },
+    closeDeleteDialog () {
+      this.showDeleteDialog = false
+    },
+    async deleteTrophy () {
+      await this.api.deleteTrophy(this.id)
+      this.closeDeleteDialog()
+      this.$router.push('/home')
     }
   }
 }
