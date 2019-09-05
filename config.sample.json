@@ -1,3 +1,4 @@
 {
-  "API_ORIGIN": "http://localhost:5000"
+  "API_ORIGIN": "http://localhost:5000",
+  "TWITTER_ID": "mytrophy_app"
 }
