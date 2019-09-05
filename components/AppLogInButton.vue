@@ -69,6 +69,7 @@ export default {
     },
     async signIn () {
       await this.$store.dispatch('signIn')
+      this.close()
       this.$router.push('/home')
     }
   }
