@@ -16,10 +16,6 @@
 <script>
 export default {
   props: {
-    id: {
-      type: Number,
-      required: true
-    },
     title: {
       type: String,
       required: true
