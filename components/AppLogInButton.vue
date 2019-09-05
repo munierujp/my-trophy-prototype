@@ -21,10 +21,6 @@
             :label="$t('LOG_IN')"
             @click="signIn"
           />
-          <app-dialog-button
-            :label="$t('CLOSE')"
-            @click="close"
-          />
         </v-card-actions>
       </v-card>
     </v-dialog>
