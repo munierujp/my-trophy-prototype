@@ -1,7 +1,7 @@
 <template>
   <v-card
     :to="to"
-    width="320px"
+    :width="width"
     max-width="100%"
   >
     <v-card-title primary-title>
@@ -23,6 +23,10 @@ export default {
     description: {
       type: String,
       default: ''
+    },
+    width: {
+      type: String,
+      required: true
     },
     to: {
       type: String,

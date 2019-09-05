@@ -12,6 +12,7 @@
       <app-trophy-card
         :to="`/trophy/${trophy.id}`"
         :title="trophy.title"
+        width="320px"
       />
     </v-flex>
     <!-- dummy components for layout (align left) -->
