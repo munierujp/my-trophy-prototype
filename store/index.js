@@ -17,7 +17,7 @@ export default function () {
     }),
     getters: {
       isSignedIn: (state) => {
-        return state.auth
+        return state.auth !== null
       }
     },
     mutations: {
