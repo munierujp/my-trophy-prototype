@@ -3,6 +3,7 @@
   "APP_NAME": "My Trophy",
   "CANCEL": "キャンセル",
   "CLOSE": "閉じる",
+  "DELETE_DIALOG_MESSAGE": "本当に削除しますか？",
   "DELETE_DIALOG_TITLE": "削除",
   "DELETE": "削除",
   "ERROR_MESSAGE_404": "ページが見つかりません。",
