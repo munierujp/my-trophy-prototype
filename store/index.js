@@ -86,6 +86,7 @@ export default function () {
       },
       async signOut ({ state, commit }) {
         await signOut()
+        commit('removeUser')
         commit('removeAuth')
         state.api.clearToken()
       },
