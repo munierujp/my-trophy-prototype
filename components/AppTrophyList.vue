@@ -2,7 +2,6 @@
   <v-layout
     justify-space-around
     wrap
-    class="app-trophies"
   >
     <v-flex
       v-for="trophy in trophies"
