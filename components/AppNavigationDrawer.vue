@@ -9,12 +9,19 @@
         icon="mdi-home"
         @click="toHome"
       />
+      <app-list-item
+        :title="$t('TWITTER')"
+        icon="mdi-twitter"
+        @click="openTwitter"
+      />
     </v-list>
   </v-navigation-drawer>
 </template>
 
 <script>
 import AppListItem from '~/components/AppListItem'
+
+const { TWITTER_ID } = process.env.config
 
 export default {
   components: {
@@ -33,6 +40,9 @@ export default {
   methods: {
     toHome () {
       this.$router.push(`/home`)
+    },
+    openTwitter () {
+      window.open(`https://twitter.com/${TWITTER_ID}`, '_blank')
     }
   }
 }
