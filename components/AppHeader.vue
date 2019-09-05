@@ -9,21 +9,21 @@
     <v-toolbar-title>
       {{ $t('APP_NAME') }}
     </v-toolbar-title>
-    <template v-if="isSignedIn">
-      <v-spacer />
-      <v-menu
-        bottom
-        left
-      >
-        <template v-slot:activator="{ on }">
-          <v-btn
-            icon
-            v-on="on"
-          >
-            <v-icon>mdi-dots-vertical</v-icon>
-          </v-btn>
-        </template>
-        <v-list>
+    <v-spacer />
+    <v-menu
+      bottom
+      left
+    >
+      <template v-slot:activator="{ on }">
+        <v-btn
+          icon
+          v-on="on"
+        >
+          <v-icon>mdi-dots-vertical</v-icon>
+        </v-btn>
+      </template>
+      <v-list>
+        <template v-if="isSignedIn">
           <app-list-item
             :title="user.name"
             :subtitle="user.email"
@@ -34,9 +34,15 @@
             :title="$t('LOG_OUT')"
             @click="signOut"
           />
-        </v-list>
-      </v-menu>
-    </template>
+        </template>
+        <template v-else>
+          <app-list-item
+            :title="$t('LOG_IN')"
+            @click="signIn"
+          />
+        </template>
+      </v-list>
+    </v-menu>
   </v-app-bar>
 </template>
 
@@ -61,6 +67,10 @@ export default {
   methods: {
     toggleDrawer () {
       this.$store.commit('setDrawer', !this.drawer)
+    },
+    async signIn () {
+      await this.$store.dispatch('signIn')
+      this.$router.push('/home')
     },
     signOut () {
       this.$store.dispatch('signOut').then(() => {

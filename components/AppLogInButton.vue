@@ -68,9 +68,7 @@ export default {
       this.showDialog = false
     },
     async signIn () {
-      await this.$store.dispatch('signInByGoogle')
-      await this.$store.dispatch('initApi')
-      await this.$store.dispatch('fetchUserOrCreate')
+      await this.$store.dispatch('signIn')
       this.$router.push('/home')
     }
   }
