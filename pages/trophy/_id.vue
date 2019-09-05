@@ -6,7 +6,7 @@
     <v-flex>
       <app-tag
         :label="trophy.user.name"
-        icon="mdi-account-circle"
+        :icon="icons.user"
         color="secondary"
         :to="`/user/${trophy.user.id}`"
       />
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import icons from '~/modules/icons'
 import AppTag from '~/components/AppTag'
 import AppTrophyCard from '~/components/AppTrophyCard'
 
@@ -32,6 +33,9 @@ export default {
     AppTag,
     AppTrophyCard
   },
+  data: () => ({
+    icons
+  }),
   computed: {
     isSignedIn () {
       return this.$store.getters.isSignedIn

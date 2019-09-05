@@ -15,13 +15,13 @@
         icon
         :to="`/edit/${id}`"
       >
-        <v-icon>mdi-square-edit-outline</v-icon>
+        <v-icon>{{ icons.edit }}</v-icon>
       </v-btn>
       <v-btn
         icon
         @click="openDeleteDialog"
       >
-        <v-icon>mdi-delete</v-icon>
+        <v-icon>{{ icons.delete }}</v-icon>
       </v-btn>
       <v-dialog
         v-model="showDeleteDialog"
@@ -53,6 +53,7 @@
 </template>
 
 <script>
+import icons from '~/modules/icons'
 import AppDialogButton from '~/components/AppDialogButton'
 
 export default {
@@ -82,6 +83,7 @@ export default {
     }
   },
   data: () => ({
+    icons,
     showDeleteDialog: false
   }),
   computed: {

@@ -6,12 +6,12 @@
     <v-list>
       <app-list-item
         :title="$t('HOME')"
-        icon="mdi-home"
+        :icon="icons.home"
         @click="toHome"
       />
       <app-list-item
         :title="$t('TWITTER')"
-        icon="mdi-twitter"
+        :icon="icons.twitter"
         @click="openTwitter"
       />
     </v-list>
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import icons from '~/modules/icons'
 import AppListItem from '~/components/AppListItem'
 
 const { TWITTER_ID } = process.env.config
@@ -27,6 +28,9 @@ export default {
   components: {
     AppListItem
   },
+  data: () => ({
+    icons
+  }),
   computed: {
     drawer: {
       get () {

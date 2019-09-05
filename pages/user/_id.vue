@@ -6,7 +6,7 @@
     <v-flex>
       <app-tag
         :label="user.name"
-        icon="mdi-account-circle"
+        :icon="icons.user"
         color="secondary"
       />
     </v-flex>
@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import icons from '~/modules/icons'
 import sortByIdDesc from '~/modules/sortByIdDesc'
 import AppTag from '~/components/AppTag'
 import AppTrophyList from '~/components/AppTrophyList'
@@ -26,6 +27,9 @@ export default {
     AppTag,
     AppTrophyList
   },
+  data: () => ({
+    icons
+  }),
   async asyncData ({ store, params }) {
     const { api } = store.state
     const user = await api.fetchUserById(params.id)

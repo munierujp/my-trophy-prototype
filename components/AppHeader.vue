@@ -20,20 +20,20 @@
             icon
             v-on="on"
           >
-            <v-icon>mdi-dots-vertical</v-icon>
+            <v-icon>{{ icons.menu }}</v-icon>
           </v-btn>
         </template>
         <v-list>
-            <app-list-item
-              :title="user.name"
-              :subtitle="user.email"
-              @click="toMyPage"
-            />
-            <v-divider />
-            <app-list-item
-              :title="$t('LOG_OUT')"
-              @click="signOut"
-            />
+          <app-list-item
+            :title="user.name"
+            :subtitle="user.email"
+            @click="toMyPage"
+          />
+          <v-divider />
+          <app-list-item
+            :title="$t('LOG_OUT')"
+            @click="signOut"
+          />
         </v-list>
       </v-menu>
     </template>
@@ -41,12 +41,16 @@
 </template>
 
 <script>
+import icons from '~/modules/icons'
 import AppListItem from '~/components/AppListItem'
 
 export default {
   components: {
     AppListItem
   },
+  data: () => ({
+    icons
+  }),
   computed: {
     isSignedIn () {
       return this.$store.getters.isSignedIn
