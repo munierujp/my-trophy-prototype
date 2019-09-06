@@ -5,6 +5,7 @@ export default {
   edit: 'mdi-pencil',
   home: 'mdi-home',
   menu: 'mdi-dots-vertical',
+  save: 'mdi-content-save',
   twitter: 'mdi-twitter',
   user: 'mdi-account-circle'
 }
