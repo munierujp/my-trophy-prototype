@@ -1,6 +1,7 @@
 {
   "APP_DESCRIPTION": "人生のトロフィーを共有しよう",
   "APP_NAME": "My Trophy",
+  "BODY": "本文",
   "CANCEL": "キャンセル",
   "CLOSE": "閉じる",
   "DELETE_DIALOG_MESSAGE": "本当に削除しますか？",
