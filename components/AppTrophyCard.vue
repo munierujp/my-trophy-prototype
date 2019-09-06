@@ -21,44 +21,23 @@
         :icon="icons.delete"
         @click="openDeleteDialog"
       />
-      <v-dialog
+      <app-trophy-delete-dialog
+        :id="id"
         v-model="showDeleteDialog"
-        width="320px"
-      >
-        <v-card>
-          <v-card-title>
-            {{ $t('DELETE_DIALOG_TITLE') }}
-          </v-card-title>
-          <v-card-text>
-            {{ $t('DELETE_DIALOG_MESSAGE') }}
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer />
-            <app-dialog-button
-              :label="$t('CANCEL')"
-              @click="closeDeleteDialog"
-            />
-            <app-dialog-button
-              :label="$t('DELETE')"
-              color="red"
-              @click="deleteTrophy"
-            />
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
+      />
     </v-card-actions>
   </v-card>
 </template>
 
 <script>
 import icons from '~/modules/icons'
-import AppDialogButton from '~/components/AppDialogButton'
 import AppIconButton from '~/components/AppIconButton'
+import AppTrophyDeleteDialog from '~/components/AppTrophyDeleteDialog'
 
 export default {
   components: {
-    AppDialogButton,
-    AppIconButton
+    AppIconButton,
+    AppTrophyDeleteDialog
   },
   props: {
     id: {
@@ -97,11 +76,6 @@ export default {
     },
     closeDeleteDialog () {
       this.showDeleteDialog = false
-    },
-    async deleteTrophy () {
-      await this.api.deleteTrophy(this.id)
-      this.closeDeleteDialog()
-      this.$router.push('/home')
     }
   }
 }
