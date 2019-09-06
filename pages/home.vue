@@ -19,8 +19,8 @@ export default {
     AppTrophyList
   },
   async asyncData ({ store, params }) {
-    const { api, user } = store.state
-    const trophies = await api.fetchTrophiesByUserId(user.id).then(sortByIdDesc)
+    const { api, auth } = store.state
+    const trophies = await api.fetchTrophiesByUserId(auth.user.id).then(sortByIdDesc)
     return {
       trophies
     }

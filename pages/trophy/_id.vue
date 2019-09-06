@@ -40,11 +40,11 @@ export default {
     isSignedIn () {
       return this.$store.getters.isSignedIn
     },
-    user () {
-      return this.$store.state.user
+    auth () {
+      return this.$store.state.auth
     },
     writable () {
-      return this.isSignedIn && this.trophy.user.id === this.user.id
+      return this.isSignedIn && this.trophy.user.id === this.auth.user.id
     }
   },
   async asyncData ({ store, params }) {
