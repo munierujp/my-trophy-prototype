@@ -1,0 +1,73 @@
+<template>
+  <v-dialog
+    v-model="show"
+    width="320px"
+  >
+    <v-card>
+      <v-card-title>
+        {{ $t('DELETE_DIALOG_TITLE') }}
+      </v-card-title>
+      <v-card-text>
+        {{ $t('DELETE_DIALOG_MESSAGE') }}
+      </v-card-text>
+      <v-card-actions>
+        <v-spacer />
+        <app-dialog-button
+          :label="$t('CANCEL')"
+          @click="close"
+        />
+        <app-dialog-button
+          :label="$t('DELETE')"
+          @click="deleteTrophy"
+          color="red"
+        />
+      </v-card-actions>
+    </v-card>
+  </v-dialog>
+</template>
+
+<script>
+import AppDialogButton from '~/components/AppDialogButton'
+
+export default {
+  components: {
+    AppDialogButton
+  },
+  props: {
+    value: {
+      type: Boolean,
+      required: true
+    },
+    id: {
+      type: Number,
+      required: true
+    }
+  },
+  computed: {
+    show: {
+      get () {
+        return this.value
+      },
+      set (value) {
+        this.$emit('input', value)
+      }
+    },
+    api () {
+      return this.$store.state.api
+    }
+  },
+  methods: {
+    open () {
+      this.show = true
+    },
+    close () {
+      this.show = false
+    },
+    async deleteTrophy () {
+      await this.api.deleteTrophy(this.id)
+      this.close()
+      this.$router.push('/home')
+    }
+  }
+}
+</script>
