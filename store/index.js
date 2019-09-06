@@ -11,7 +11,6 @@ export default function () {
   return new Vuex.Store({
     state: () => ({
       auth: null,
-      user: null,
       api: null,
       drawer: null
     }),
@@ -28,10 +27,10 @@ export default function () {
         state.auth = null
       },
       setUser (state, user) {
-        state.user = user
+        state.auth.user = user
       },
       removeUser (state) {
-        state.user = null
+        state.auth.user = null
       },
       setApi (state, api) {
         state.api = api
@@ -107,7 +106,7 @@ export default function () {
       },
       async fetchUserOrCreate ({ state, dispatch }) {
         await dispatch('fetchUser')
-        if (!state.user) {
+        if (!state.auth.user) {
           await dispatch('createUser')
         }
       }

@@ -55,8 +55,11 @@ export default {
     isSignedIn () {
       return this.$store.getters.isSignedIn
     },
+    auth () {
+      return this.$store.state.auth
+    },
     user () {
-      return this.$store.state.user
+      return this.auth.user
     },
     drawer () {
       return this.$store.state.drawer
