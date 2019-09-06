@@ -17,12 +17,10 @@
       >
         <v-icon>{{ icons.edit }}</v-icon>
       </v-btn>
-      <v-btn
-        icon
+      <app-icon-button
+        :icon="icons.delete"
         @click="openDeleteDialog"
-      >
-        <v-icon>{{ icons.delete }}</v-icon>
-      </v-btn>
+      />
       <v-dialog
         v-model="showDeleteDialog"
         width="320px"
@@ -55,10 +53,12 @@
 <script>
 import icons from '~/modules/icons'
 import AppDialogButton from '~/components/AppDialogButton'
+import AppIconButton from '~/components/AppIconButton'
 
 export default {
   components: {
-    AppDialogButton
+    AppDialogButton,
+    AppIconButton
   },
   props: {
     id: {
