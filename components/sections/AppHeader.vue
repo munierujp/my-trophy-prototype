@@ -11,6 +11,14 @@
     </v-toolbar-title>
     <template v-if="isSignedIn">
       <v-spacer />
+      <app-icon-button
+        :icon="icons.add"
+        @click="openCreateDialog"
+      />
+      <app-trophy-create-dialog
+        v-model="showCreateDialog"
+        @create="onCreateTrophy"
+      />
       <v-menu
         bottom
         left
@@ -42,14 +50,19 @@
 
 <script>
 import icons from '~/modules/icons'
+import AppIconButton from '~/components/elements/AppIconButton'
 import AppListItem from '~/components/elements/AppListItem'
+import AppTrophyCreateDialog from '~/components/items/AppTrophyCreateDialog'
 
 export default {
   components: {
-    AppListItem
+    AppIconButton,
+    AppListItem,
+    AppTrophyCreateDialog
   },
   data: () => ({
-    icons
+    icons,
+    showCreateDialog: false
   }),
   computed: {
     isSignedIn () {
@@ -72,6 +85,16 @@ export default {
     },
     toMyPage () {
       this.$router.push(`/user/${this.user.id}`)
+    },
+    openCreateDialog () {
+      this.showCreateDialog = true
+    },
+    closeCreateDialog () {
+      this.showCreateDialog = false
+    },
+    onCreateTrophy (trophy) {
+      this.$router.push(`/trophy/${trophy.id}`)
+      this.closeCreateDialog()
     }
   }
 }
