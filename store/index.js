@@ -43,6 +43,9 @@ export default function () {
       },
       removeDrawer (state) {
         state.drawer = null
+      },
+      toggleDrawer (state) {
+        state.drawer = !state.drawer
       }
     },
     actions: {
