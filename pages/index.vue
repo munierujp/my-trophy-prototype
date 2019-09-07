@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import AppButton from '~/components/AppButton'
+import AppButton from '~/components/elements/AppButton'
 import AppDescription from '~/components/AppDescription'
 import AppLogInDialog from '~/components/AppLogInDialog'
 import AppTitle from '~/components/AppTitle'

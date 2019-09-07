@@ -19,7 +19,7 @@
 <script>
 import icons from '~/modules/icons'
 import sortByIdDesc from '~/modules/sortByIdDesc'
-import AppTag from '~/components/AppTag'
+import AppTag from '~/components/elements/AppTag'
 import AppTrophyList from '~/components/AppTrophyList'
 
 export default {

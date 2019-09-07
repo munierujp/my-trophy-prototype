@@ -18,8 +18,8 @@
         />
         <app-dialog-button
           :label="$t('DELETE')"
-          @click="deleteTrophy"
           color="red"
+          @click="deleteTrophy"
         />
       </v-card-actions>
     </v-card>
@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import AppDialogButton from '~/components/AppDialogButton'
+import AppDialogButton from '~/components/elements/AppDialogButton'
 
 export default {
   components: {

@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import AppDialogButton from '~/components/AppDialogButton'
+import AppDialogButton from '~/components/elements/AppDialogButton'
 
 export default {
   components: {

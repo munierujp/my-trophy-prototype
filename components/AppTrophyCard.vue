@@ -36,7 +36,7 @@
 
 <script>
 import icons from '~/modules/icons'
-import AppIconButton from '~/components/AppIconButton'
+import AppIconButton from '~/components/elements/AppIconButton'
 import AppTrophyDeleteDialog from '~/components/AppTrophyDeleteDialog'
 import AppTrophyEditDialog from '~/components/AppTrophyEditDialog'
 
