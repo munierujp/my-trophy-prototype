@@ -6,6 +6,7 @@ export default {
   home: 'mdi-home',
   menu: 'mdi-dots-vertical',
   save: 'mdi-content-save',
+  send: 'mdi-send',
   twitter: 'mdi-twitter',
   user: 'mdi-account-circle'
 }
