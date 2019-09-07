@@ -61,21 +61,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-$trophy-card-width: 320px;
-
-.app-trophy {
-  flex-grow: 0;
-}
-
-.app-trophy-dummy {
-  height: 0;
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-
-  div {
-    width: $trophy-card-width;
-  }
-}
-</style>
