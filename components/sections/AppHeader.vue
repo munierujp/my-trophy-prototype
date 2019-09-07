@@ -66,10 +66,9 @@ export default {
     toggleDrawer () {
       this.$store.commit('toggleDrawer')
     },
-    signOut () {
-      this.$store.dispatch('signOut').then(() => {
-        this.$router.push('/')
-      })
+    async signOut () {
+      await this.$store.dispatch('signOut')
+      this.$router.push('/')
     },
     toMyPage () {
       this.$router.push(`/user/${this.user.id}`)
