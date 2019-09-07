@@ -20,7 +20,7 @@
         v-model="showEditDialog"
         :title="trophy.title"
         :description="trophy.description"
-        @update="updateTrophy"
+        @update="onUpdateTrophy"
       />
       <app-icon-button
         :icon="icons.delete"
@@ -83,11 +83,15 @@ export default {
     openEditDialog () {
       this.showEditDialog = true
     },
+    closeEditDialog () {
+      this.showEditDialog = false
+    },
     openDeleteDialog () {
       this.showDeleteDialog = true
     },
-    updateTrophy (trophy) {
+    onUpdateTrophy (trophy) {
       this.trophy = trophy
+      this.closeEditDialog()
     }
   }
 }
