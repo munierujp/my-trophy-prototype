@@ -11,7 +11,7 @@
         :to="`/user/${trophy.user.id}`"
       />
     </v-flex>
-    <v-flex class="app-trophy">
+    <v-flex>
       <app-trophy-card
         :id="trophy.id"
         :title="trophy.title"
