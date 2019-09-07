@@ -1,5 +1,6 @@
 // mdi: https://materialdesignicons.com/
 export default {
+  add: 'mdi-plus',
   close: 'mdi-close',
   delete: 'mdi-delete',
   edit: 'mdi-pencil',
