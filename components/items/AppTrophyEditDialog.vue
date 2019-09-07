@@ -24,11 +24,7 @@
       <v-card-text>
         <v-container>
           <v-row justify="center">
-            <v-col
-              sm="12"
-              md="6"
-              lg="4"
-            >
+            <v-col class="app-col">
               <app-text-form
                 v-model="trophy.title"
                 :label="$t('TITLE')"
@@ -39,11 +35,7 @@
             </v-col>
           </v-row>
           <v-row justify="center">
-            <v-col
-              sm="12"
-              md="6"
-              lg="4"
-            >
+            <v-col class="app-col">
               <app-textarea
                 v-model="trophy.description"
                 :label="$t('BODY')"
@@ -124,3 +116,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.app-col {
+  max-width: 600px;
+}
+</style>
