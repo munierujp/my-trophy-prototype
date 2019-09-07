@@ -29,11 +29,10 @@
               md="6"
               lg="4"
             >
-              <v-text-field
+              <app-text-form
                 v-model="trophy.title"
                 :label="$t('TITLE')"
-                :maxlength="titleMaxLength"
-                :counter="titleMaxLength"
+                :max-length="titleMaxLength"
                 required
                 autofocus
               />
@@ -63,10 +62,12 @@
 import icons from '~/modules/icons'
 import { trophy } from '~/modules/models'
 import AppIconButton from '~/components/elements/AppIconButton'
+import AppTextForm from '~/components/elements/AppTextForm'
 
 export default {
   components: {
-    AppIconButton
+    AppIconButton,
+    AppTextForm
   },
   props: {
     value: {
