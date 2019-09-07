@@ -60,19 +60,15 @@ export default {
     },
     user () {
       return this.auth.user
-    },
-    drawer () {
-      return this.$store.state.drawer
     }
   },
   methods: {
     toggleDrawer () {
-      this.$store.commit('setDrawer', !this.drawer)
+      this.$store.commit('toggleDrawer')
     },
-    signOut () {
-      this.$store.dispatch('signOut').then(() => {
-        this.$router.push('/')
-      })
+    async signOut () {
+      await this.$store.dispatch('signOut')
+      this.$router.push('/')
     },
     toMyPage () {
       this.$router.push(`/user/${this.user.id}`)

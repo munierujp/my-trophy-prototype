@@ -1,6 +1,6 @@
 <template>
   <v-btn
-    class="app-dialog-button"
+    class="app-text-button"
     text
     :color="color"
     @click="click"
@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.app-dialog-button {
+.app-text-button {
   text-transform: none;
 }
 </style>

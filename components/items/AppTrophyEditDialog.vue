@@ -24,32 +24,22 @@
       <v-card-text>
         <v-container>
           <v-row justify="center">
-            <v-col
-              sm="12"
-              md="6"
-              lg="4"
-            >
-              <v-text-field
+            <v-col class="app-col">
+              <app-text-form
                 v-model="trophy.title"
                 :label="$t('TITLE')"
-                :maxlength="titleMaxLength"
-                :counter="titleMaxLength"
+                :max-length="titleMaxLength"
                 required
                 autofocus
               />
             </v-col>
           </v-row>
           <v-row justify="center">
-            <v-col
-              sm="12"
-              md="6"
-              lg="4"
-            >
-              <v-textarea
+            <v-col class="app-col">
+              <app-textarea
                 v-model="trophy.description"
                 :label="$t('BODY')"
-                :maxlength="descriptionMaxLength"
-                :counter="descriptionMaxLength"
+                :max-length="descriptionMaxLength"
               />
             </v-col>
           </v-row>
@@ -63,10 +53,14 @@
 import icons from '~/modules/icons'
 import { trophy } from '~/modules/models'
 import AppIconButton from '~/components/elements/AppIconButton'
+import AppTextForm from '~/components/elements/AppTextForm'
+import AppTextarea from '~/components/elements/AppTextarea'
 
 export default {
   components: {
-    AppIconButton
+    AppIconButton,
+    AppTextForm,
+    AppTextarea
   },
   props: {
     value: {
@@ -122,3 +116,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.app-col {
+  max-width: 600px;
+}
+</style>
