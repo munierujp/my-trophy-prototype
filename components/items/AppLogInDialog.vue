@@ -12,7 +12,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer />
-        <app-dialog-button
+        <app-text-button
           :label="$t('LOG_IN')"
           @click="signIn"
         />
@@ -22,11 +22,11 @@
 </template>
 
 <script>
-import AppDialogButton from '~/components/elements/AppDialogButton'
+import AppTextButton from '~/components/elements/AppTextButton'
 
 export default {
   components: {
-    AppDialogButton
+    AppTextButton
   },
   props: {
     value: {

@@ -12,11 +12,11 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer />
-        <app-dialog-button
+        <app-text-button
           :label="$t('CANCEL')"
           @click="close"
         />
-        <app-dialog-button
+        <app-text-button
           :label="$t('DELETE')"
           color="red"
           @click="deleteTrophy"
@@ -27,11 +27,11 @@
 </template>
 
 <script>
-import AppDialogButton from '~/components/elements/AppDialogButton'
+import AppTextButton from '~/components/elements/AppTextButton'
 
 export default {
   components: {
-    AppDialogButton
+    AppTextButton
   },
   props: {
     value: {
