@@ -44,11 +44,10 @@
               md="6"
               lg="4"
             >
-              <v-textarea
+              <app-textarea
                 v-model="trophy.description"
                 :label="$t('BODY')"
-                :maxlength="descriptionMaxLength"
-                :counter="descriptionMaxLength"
+                :max-length="descriptionMaxLength"
               />
             </v-col>
           </v-row>
@@ -63,11 +62,13 @@ import icons from '~/modules/icons'
 import { trophy } from '~/modules/models'
 import AppIconButton from '~/components/elements/AppIconButton'
 import AppTextForm from '~/components/elements/AppTextForm'
+import AppTextarea from '~/components/elements/AppTextarea'
 
 export default {
   components: {
     AppIconButton,
-    AppTextForm
+    AppTextForm,
+    AppTextarea
   },
   props: {
     value: {
