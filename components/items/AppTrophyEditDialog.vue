@@ -111,7 +111,6 @@ export default {
     async save () {
       await this.api.updateTrophy(this.id, this.trophy)
       this.$emit('update', this.trophy)
-      this.close()
     }
   }
 }
