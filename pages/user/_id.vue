@@ -4,10 +4,9 @@
     align-center
   >
     <v-flex>
-      <app-tag
-        :label="user.name"
-        :icon="icons.user"
-        color="secondary"
+      <app-user-tag
+        :id="user.id"
+        :name="user.name"
       />
     </v-flex>
     <v-flex>
@@ -19,13 +18,13 @@
 <script>
 import icons from '~/modules/icons'
 import sortByIdDesc from '~/modules/sortByIdDesc'
-import AppTag from '~/components/elements/AppTag'
 import AppTrophyList from '~/components/items/AppTrophyList'
+import AppUserTag from '~/components/items/AppUserTag'
 
 export default {
   components: {
-    AppTag,
-    AppTrophyList
+    AppTrophyList,
+    AppUserTag
   },
   data: () => ({
     icons

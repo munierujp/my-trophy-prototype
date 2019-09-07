@@ -4,11 +4,10 @@
     align-center
   >
     <v-flex>
-      <app-tag
-        :label="trophy.user.name"
-        :icon="icons.user"
-        color="secondary"
-        :to="`/user/${trophy.user.id}`"
+      <app-user-tag
+        :id="trophy.user.id"
+        :name="trophy.user.name"
+        link
       />
     </v-flex>
     <v-flex>
@@ -25,13 +24,13 @@
 
 <script>
 import icons from '~/modules/icons'
-import AppTag from '~/components/elements/AppTag'
 import AppTrophyCard from '~/components/items/AppTrophyCard'
+import AppUserTag from '~/components/items/AppUserTag'
 
 export default {
   components: {
-    AppTag,
-    AppTrophyCard
+    AppTrophyCard,
+    AppUserTag
   },
   data: () => ({
     icons
