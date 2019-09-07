@@ -62,7 +62,7 @@
 <script>
 import icons from '~/modules/icons'
 import { trophy } from '~/modules/models'
-import AppIconButton from '~/components/AppIconButton'
+import AppIconButton from '~/components/elements/AppIconButton'
 
 export default {
   components: {

@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import AppTrophyListItem from '~/components/AppTrophyListItem'
+import AppTrophyListItem from '~/components/items/AppTrophyListItem'
 
 export default {
   components: {

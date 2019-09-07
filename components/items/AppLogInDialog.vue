@@ -5,21 +5,16 @@
   >
     <v-card>
       <v-card-title>
-        {{ $t('DELETE_DIALOG_TITLE') }}
+        {{ $t('LOG_IN_DIALOG_TITLE') }}
       </v-card-title>
       <v-card-text>
-        {{ $t('DELETE_DIALOG_MESSAGE') }}
+        {{ $t('LOG_IN_DIALOG_MESSAGE') }}
       </v-card-text>
       <v-card-actions>
         <v-spacer />
         <app-dialog-button
-          :label="$t('CANCEL')"
-          @click="close"
-        />
-        <app-dialog-button
-          :label="$t('DELETE')"
-          @click="deleteTrophy"
-          color="red"
+          :label="$t('LOG_IN')"
+          @click="signIn"
         />
       </v-card-actions>
     </v-card>
@@ -27,7 +22,7 @@
 </template>
 
 <script>
-import AppDialogButton from '~/components/AppDialogButton'
+import AppDialogButton from '~/components/elements/AppDialogButton'
 
 export default {
   components: {
@@ -36,10 +31,6 @@ export default {
   props: {
     value: {
       type: Boolean,
-      required: true
-    },
-    id: {
-      type: Number,
       required: true
     }
   },
@@ -51,17 +42,14 @@ export default {
       set (value) {
         this.$emit('input', value)
       }
-    },
-    api () {
-      return this.$store.state.api
     }
   },
   methods: {
     close () {
       this.show = false
     },
-    async deleteTrophy () {
-      await this.api.deleteTrophy(this.id)
+    async signIn () {
+      await this.$store.dispatch('signIn')
       this.close()
       this.$router.push('/home')
     }

@@ -20,7 +20,7 @@
 
 <script>
 import icons from '~/modules/icons'
-import AppListItem from '~/components/AppListItem'
+import AppListItem from '~/components/elements/AppListItem'
 
 const { TWITTER_ID } = process.env.config
 

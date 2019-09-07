@@ -19,8 +19,8 @@
 <script>
 import icons from '~/modules/icons'
 import sortByIdDesc from '~/modules/sortByIdDesc'
-import AppTag from '~/components/AppTag'
-import AppTrophyList from '~/components/AppTrophyList'
+import AppTag from '~/components/elements/AppTag'
+import AppTrophyList from '~/components/items/AppTrophyList'
 
 export default {
   components: {

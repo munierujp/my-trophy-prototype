@@ -25,8 +25,8 @@
 
 <script>
 import icons from '~/modules/icons'
-import AppTag from '~/components/AppTag'
-import AppTrophyCard from '~/components/AppTrophyCard'
+import AppTag from '~/components/elements/AppTag'
+import AppTrophyCard from '~/components/items/AppTrophyCard'
 
 export default {
   components: {

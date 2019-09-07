@@ -14,8 +14,8 @@
 </template>
 
 <script>
-import AppHeader from '~/components/AppHeader'
-import AppNavigationDrawer from '~/components/AppNavigationDrawer'
+import AppHeader from '~/components/sections/AppHeader'
+import AppNavigationDrawer from '~/components/sections/AppNavigationDrawer'
 
 export default {
   components: {

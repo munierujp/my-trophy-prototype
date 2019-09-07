@@ -42,7 +42,7 @@
 
 <script>
 import icons from '~/modules/icons'
-import AppListItem from '~/components/AppListItem'
+import AppListItem from '~/components/elements/AppListItem'
 
 export default {
   components: {
