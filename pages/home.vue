@@ -11,7 +11,7 @@
 
 <script>
 import sortByIdDesc from '~/modules/sortByIdDesc'
-import AppTrophyList from '~/components/AppTrophyList'
+import AppTrophyList from '~/components/items/AppTrophyList'
 
 export default {
   middleware: 'requireAuthenticated',
