@@ -1,7 +1,9 @@
 <template>
   <div>
     <app-button
-      v-bind="link"
+      :label="$t('START')"
+      color="secondary"
+      dark
       @click="open"
     />
     <v-dialog
@@ -42,14 +44,6 @@ export default {
   computed: {
     isSignedIn () {
       return this.$store.getters.isSignedIn
-    },
-    link () {
-      return {
-        title: this.$t('START'),
-        label: this.$t('START'),
-        color: 'secondary',
-        dark: true
-      }
     }
   },
   methods: {

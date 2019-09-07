@@ -57,9 +57,6 @@ export default {
     }
   },
   methods: {
-    open () {
-      this.show = true
-    },
     close () {
       this.show = false
     },

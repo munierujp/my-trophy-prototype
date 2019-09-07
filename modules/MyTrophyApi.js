@@ -54,7 +54,7 @@ class MyTrophyApi {
   }
 
   async updateTrophy (id, trophy) {
-    await this.api.post(`/trophies/${id}`, trophy)
+    await this.api.put(`/trophies/${id}`, trophy)
   }
 
   async deleteTrophy (id) {
