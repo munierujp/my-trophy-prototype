@@ -60,14 +60,11 @@ export default {
     },
     user () {
       return this.auth.user
-    },
-    drawer () {
-      return this.$store.state.drawer
     }
   },
   methods: {
     toggleDrawer () {
-      this.$store.commit('setDrawer', !this.drawer)
+      this.$store.commit('toggleDrawer')
     },
     signOut () {
       this.$store.dispatch('signOut').then(() => {
