@@ -1,5 +1,7 @@
 import Val from '@js-commons/val'
 import API from '~/modules/API'
+import User from '~/modules/models/User'
+import Trophy from '~/modules/models/Trophy'
 
 class MyTrophyApi {
   constructor (api) {
@@ -19,24 +21,27 @@ class MyTrophyApi {
   }
 
   async fetchUserById (id) {
-    const user = await this.api.get(`/users/${id}`)
+    const user = await this.api.get(`/users/${id}`).then(User.fromResponse)
     return user
   }
 
   async fetchUserByEmail (email) {
-    const users = await this.api.get('/users/', {
+    const params = {
       email
-    })
+    }
+    const users = await this.api.get('/users/', params)
     return Val.of(users)
       .filter(users => users.length)
       .map(users => users[0])
+      .map(User.fromResponse)
       .or(null)
   }
 
   async fetchTrophiesByUserId (userId) {
-    const trophies = await this.api.get('/trophies/', {
+    const params = {
       user_id: userId
-    })
+    }
+    const trophies = await this.api.get('/trophies/', params).then(trophies => trophies.map(Trophy.fromResponse))
     return trophies
   }
 
@@ -45,7 +50,7 @@ class MyTrophyApi {
   }
 
   async fetchTrophyById (id) {
-    const trophy = await this.api.get(`/trophies/${id}`)
+    const trophy = await this.api.get(`/trophies/${id}`).then(Trophy.fromResponse)
     return trophy
   }
 
