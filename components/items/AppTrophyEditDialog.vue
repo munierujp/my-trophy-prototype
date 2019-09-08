@@ -43,6 +43,15 @@
               />
             </v-col>
           </v-row>
+          <v-row justify="center">
+            <v-col class="app-col">
+              <app-date-form
+                v-model="trophy.achievedOn"
+                :label="$t('ACHIEVED_DATE')"
+                required
+              />
+            </v-col>
+          </v-row>
         </v-container>
       </v-card-text>
     </v-card>
@@ -52,12 +61,14 @@
 <script>
 import icons from '~/modules/icons'
 import { trophy } from '~/modules/models'
+import AppDateForm from '~/components/elements/AppDateForm'
 import AppIconButton from '~/components/elements/AppIconButton'
 import AppTextForm from '~/components/elements/AppTextForm'
 import AppTextarea from '~/components/elements/AppTextarea'
 
 export default {
   components: {
+    AppDateForm,
     AppIconButton,
     AppTextForm,
     AppTextarea
@@ -78,6 +89,10 @@ export default {
     description: {
       type: String,
       default: ''
+    },
+    achievedOn: {
+      type: String,
+      required: true
     }
   },
   data () {
@@ -85,7 +100,8 @@ export default {
       icons,
       trophy: {
         title: this.title,
-        description: this.description
+        description: this.description,
+        achievedOn: this.achievedOn
       },
       titleMaxLength: trophy.title.max,
       descriptionMaxLength: trophy.description.max
@@ -102,6 +118,13 @@ export default {
     },
     api () {
       return this.$store.state.api
+    },
+    request () {
+      return {
+        title: this.trophy.title,
+        description: this.trophy.description,
+        achieved_on: this.trophy.achievedOn
+      }
     }
   },
   methods: {
@@ -109,7 +132,7 @@ export default {
       this.show = false
     },
     async save () {
-      await this.api.updateTrophy(this.id, this.trophy)
+      await this.api.updateTrophy(this.id, this.request)
       this.$emit('update', this.trophy)
     }
   }
