@@ -43,6 +43,15 @@
               />
             </v-col>
           </v-row>
+          <v-row justify="center">
+            <v-col class="app-col">
+              <app-date-form
+                v-model="trophy.achievedOn"
+                :label="$t('ACHIEVED_DATE')"
+                required
+              />
+            </v-col>
+          </v-row>
         </v-container>
       </v-card-text>
     </v-card>
@@ -50,15 +59,18 @@
 </template>
 
 <script>
+import { DateTime } from 'luxon'
 import icons from '~/modules/icons'
 import findNewestById from '~/modules/findNewestById'
 import { trophy } from '~/modules/models'
+import AppDateForm from '~/components/elements/AppDateForm'
 import AppIconButton from '~/components/elements/AppIconButton'
 import AppTextForm from '~/components/elements/AppTextForm'
 import AppTextarea from '~/components/elements/AppTextarea'
 
 export default {
   components: {
+    AppDateForm,
     AppIconButton,
     AppTextForm,
     AppTextarea
@@ -74,7 +86,8 @@ export default {
       icons,
       trophy: {
         title: '',
-        description: ''
+        description: '',
+        achievedOn: DateTime.local().toISODate()
       },
       titleMaxLength: trophy.title.max,
       descriptionMaxLength: trophy.description.max
@@ -97,6 +110,13 @@ export default {
     },
     user () {
       return this.auth.user
+    },
+    request () {
+      return {
+        title: this.trophy.title,
+        description: this.trophy.description,
+        achieved_on: this.trophy.achievedOn
+      }
     }
   },
   methods: {
@@ -104,7 +124,7 @@ export default {
       this.show = false
     },
     async send () {
-      await this.api.createTrophy(this.trophy)
+      await this.api.createTrophy(this.request)
       const trophy = await this.api.fetchTrophiesByUserId(this.user.id).then(findNewestById)
       this.$emit('create', trophy)
       this.close()

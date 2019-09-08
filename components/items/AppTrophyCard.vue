@@ -9,27 +9,40 @@
     <v-card-text v-if="trophy.description">
       {{ trophy.description }}
     </v-card-text>
-    <v-card-actions v-if="writable">
-      <v-spacer />
-      <app-icon-button
-        :icon="icons.edit"
-        @click="openEditDialog"
-      />
-      <app-trophy-edit-dialog
-        :id="id"
-        v-model="showEditDialog"
-        :title="trophy.title"
-        :description="trophy.description"
-        @update="onUpdateTrophy"
-      />
-      <app-icon-button
-        :icon="icons.delete"
-        @click="openDeleteDialog"
-      />
-      <app-trophy-delete-dialog
-        :id="id"
-        v-model="showDeleteDialog"
-      />
+    <v-card-actions>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="grey--text">
+            {{ trophy.achievedOn }}
+          </v-list-item-title>
+        </v-list-item-content>
+        <v-row
+          v-if="writable"
+          align="center"
+          justify="end"
+        >
+          <app-icon-button
+            :icon="icons.edit"
+            @click="openEditDialog"
+          />
+          <app-trophy-edit-dialog
+            :id="id"
+            v-model="showEditDialog"
+            :title="trophy.title"
+            :description="trophy.description"
+            :achieved-on="trophy.achievedOn"
+            @update="onUpdateTrophy"
+          />
+          <app-icon-button
+            :icon="icons.delete"
+            @click="openDeleteDialog"
+          />
+          <app-trophy-delete-dialog
+            :id="id"
+            v-model="showDeleteDialog"
+          />
+        </v-row>
+      </v-list-item>
     </v-card-actions>
   </v-card>
 </template>
@@ -63,6 +76,10 @@ export default {
       type: String,
       default: ''
     },
+    achievedOn: {
+      type: String,
+      required: true
+    },
     width: {
       type: String,
       required: true
@@ -73,7 +90,8 @@ export default {
       icons,
       trophy: {
         title: this.title,
-        description: this.description
+        description: this.description,
+        achievedOn: this.achievedOn
       },
       showEditDialog: false,
       showDeleteDialog: false

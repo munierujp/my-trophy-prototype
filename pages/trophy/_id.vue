@@ -15,6 +15,7 @@
         :id="trophy.id"
         :title="trophy.title"
         :description="trophy.description"
+        :achieved-on="trophy.achievedOn"
         :writable="writable"
         width="640px"
       />
@@ -52,7 +53,7 @@ export default {
     if (!trophy) {
       throw new Error('Trophy not found')
     }
-    const user = await api.fetchUserById(trophy.user_id)
+    const user = await api.fetchUserById(trophy.userId)
     trophy.user = user
     return {
       trophy
