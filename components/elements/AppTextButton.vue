@@ -3,7 +3,7 @@
     class="app-text-button"
     text
     :color="color"
-    @click="click"
+    @click="onClick"
   >
     {{ label }}
   </v-btn>
@@ -22,7 +22,7 @@ export default {
     }
   },
   methods: {
-    click (e) {
+    onClick (e) {
       this.$emit('click', e)
     }
   }
