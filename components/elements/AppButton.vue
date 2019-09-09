@@ -8,7 +8,7 @@
     :target="target"
     :disabled="disabled"
     class="app-button"
-    @click="click"
+    @click="onClick"
   >
     <v-icon
       v-if="icon"
@@ -97,7 +97,7 @@ export default {
     }
   },
   methods: {
-    click (e) {
+    onClick (e) {
       this.$emit('click', e)
     }
   }
