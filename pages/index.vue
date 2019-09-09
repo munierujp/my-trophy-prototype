@@ -14,7 +14,7 @@
         :label="$t('START')"
         color="secondary"
         dark
-        @click="openLogInDialog"
+        @click="onClickStartButton"
       />
       <app-log-in-dialog v-model="showLogInDialog" />
     </v-flex>
@@ -44,7 +44,7 @@ export default {
     }
   },
   methods: {
-    openLogInDialog () {
+    onClickStartButton () {
       if (this.isSignedIn) {
         this.$router.push('/home')
       } else {
