@@ -12,13 +12,13 @@
       >
         <app-icon-button
           :icon="icons.close"
-          @click="close"
+          @click="onClickCloseButton"
         />
         <v-toolbar-title>{{ $t('CREATE_NEW_TROPHY') }}</v-toolbar-title>
         <v-spacer />
         <app-icon-button
           :icon="icons.send"
-          @click="send"
+          @click="onClickSendButton"
         />
       </v-toolbar>
       <v-card-text>
@@ -84,11 +84,7 @@ export default {
   data () {
     return {
       icons,
-      trophy: {
-        title: '',
-        description: '',
-        achievedOn: DateTime.local().toISODate()
-      },
+      trophy: defaultValue(),
       titleMaxLength: trophy.title.max,
       descriptionMaxLength: trophy.description.max
     }
@@ -120,15 +116,34 @@ export default {
     }
   },
   methods: {
+    onClickCloseButton () {
+      this.close()
+      this.clear()
+    },
+    onClickSendButton () {
+      this.send()
+      this.close()
+      this.clear()
+    },
     close () {
       this.show = false
+    },
+    clear () {
+      this.trophy = defaultValue()
     },
     async send () {
       await this.api.createTrophy(this.request)
       const trophy = await this.api.fetchTrophiesByUserId(this.user.id).then(findNewestById)
       this.$emit('create', trophy)
-      this.close()
     }
+  }
+}
+
+function defaultValue () {
+  return {
+    title: '',
+    description: '',
+    achievedOn: DateTime.local().toISODate()
   }
 }
 </script>
