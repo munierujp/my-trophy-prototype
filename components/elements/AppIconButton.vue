@@ -1,7 +1,7 @@
 <template>
   <v-btn
     icon
-    @click="click"
+    @click="onClick"
   >
     <v-icon>{{ icon }}</v-icon>
   </v-btn>
@@ -16,7 +16,7 @@ export default {
     }
   },
   methods: {
-    click (e) {
+    onClick (e) {
       this.$emit('click', e)
     }
   }
