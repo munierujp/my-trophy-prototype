@@ -35,7 +35,7 @@
           />
           <app-icon-button
             :icon="icons.delete"
-            @click="openDeleteDialog"
+            @click="onClickDeleteButton"
           />
           <app-trophy-delete-dialog
             :id="id"
@@ -104,7 +104,7 @@ export default {
     closeEditDialog () {
       this.showEditDialog = false
     },
-    openDeleteDialog () {
+    onClickDeleteButton () {
       this.showDeleteDialog = true
     },
     onUpdateTrophy (trophy) {
