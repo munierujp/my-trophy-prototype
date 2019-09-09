@@ -101,15 +101,12 @@ export default {
     onClickEditButton () {
       this.showEditDialog = true
     },
-    closeEditDialog () {
-      this.showEditDialog = false
-    },
     onClickDeleteButton () {
       this.showDeleteDialog = true
     },
     onUpdateTrophy (trophy) {
       this.trophy = trophy
-      this.closeEditDialog()
+      this.showEditDialog = false
     }
   }
 }
