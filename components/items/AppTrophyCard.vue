@@ -23,7 +23,7 @@
         >
           <app-icon-button
             :icon="icons.edit"
-            @click="openEditDialog"
+            @click="onClickEditButton"
           />
           <app-trophy-edit-dialog
             :id="id"
@@ -98,7 +98,7 @@ export default {
     }
   },
   methods: {
-    openEditDialog () {
+    onClickEditButton () {
       this.showEditDialog = true
     },
     closeEditDialog () {
