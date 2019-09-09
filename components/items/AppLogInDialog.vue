@@ -45,12 +45,9 @@ export default {
     }
   },
   methods: {
-    close () {
-      this.show = false
-    },
     async onClickLogInButton () {
       await this.$store.dispatch('signIn')
-      this.close()
+      this.show = false
       this.$router.push('/home')
     }
   }
