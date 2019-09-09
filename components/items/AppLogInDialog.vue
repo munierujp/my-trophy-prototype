@@ -14,7 +14,7 @@
         <v-spacer />
         <app-text-button
           :label="$t('LOG_IN')"
-          @click="signIn"
+          @click="onClickLogInButton"
         />
       </v-card-actions>
     </v-card>
@@ -48,7 +48,7 @@ export default {
     close () {
       this.show = false
     },
-    async signIn () {
+    async onClickLogInButton () {
       await this.$store.dispatch('signIn')
       this.close()
       this.$router.push('/home')
