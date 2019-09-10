@@ -12,7 +12,7 @@
       >
         <app-icon-button
           :icon="icons.close"
-          @click="close"
+          @click="onClickCloseButton"
         />
         <v-toolbar-title>{{ $t('EDIT') }}</v-toolbar-title>
         <v-spacer />
@@ -128,7 +128,7 @@ export default {
     }
   },
   methods: {
-    close () {
+    onClickCloseButton () {
       this.show = false
     },
     async onClickSaveButton () {
