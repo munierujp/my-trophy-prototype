@@ -18,7 +18,7 @@
         <v-spacer />
         <app-icon-button
           :icon="icons.save"
-          @click="save"
+          @click="onClickSaveButton"
         />
       </v-toolbar>
       <v-card-text>
@@ -131,7 +131,7 @@ export default {
     close () {
       this.show = false
     },
-    async save () {
+    async onClickSaveButton () {
       await this.api.updateTrophy(this.id, this.request)
       this.$emit('update', this.trophy)
     }
