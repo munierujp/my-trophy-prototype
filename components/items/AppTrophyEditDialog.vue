@@ -129,11 +129,14 @@ export default {
   },
   methods: {
     onClickCloseButton () {
-      this.show = false
+      this.close()
     },
     async onClickSaveButton () {
       await this.api.updateTrophy(this.id, this.request)
       this.$emit('update', this.trophy)
+    },
+    close () {
+      this.show = false
     }
   }
 }
