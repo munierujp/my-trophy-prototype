@@ -84,7 +84,7 @@ export default {
   data () {
     return {
       icons,
-      currentValues: defaultValue(),
+      currentValues: createDefaultValues(),
       titleMaxLength: trophy.title.max,
       descriptionMaxLength: trophy.description.max
     }
@@ -130,7 +130,7 @@ export default {
       this.show = false
     },
     clear () {
-      this.currentValues = defaultValue()
+      this.currentValues = createDefaultValues()
     },
     async create () {
       await this.api.createTrophy(this.request)
@@ -143,7 +143,7 @@ export default {
   }
 }
 
-function defaultValue () {
+function createDefaultValues () {
   return {
     title: '',
     description: '',
