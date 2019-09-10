@@ -25,11 +25,8 @@
         <v-container>
           <v-row justify="center">
             <v-col class="app-col">
-              <app-text-form
+              <app-title-form
                 v-model="currentValues.title"
-                :label="$t('TITLE')"
-                :max-length="titleMaxLength"
-                required
                 autofocus
               />
             </v-col>
@@ -65,15 +62,15 @@ import findNewestById from '~/modules/findNewestById'
 import { trophy } from '~/modules/models'
 import AppDateForm from '~/components/elements/AppDateForm'
 import AppIconButton from '~/components/elements/AppIconButton'
-import AppTextForm from '~/components/elements/AppTextForm'
 import AppTextarea from '~/components/elements/AppTextarea'
+import AppTitleForm from '~/components/items/AppTitleForm'
 
 export default {
   components: {
     AppDateForm,
     AppIconButton,
-    AppTextForm,
-    AppTextarea
+    AppTextarea,
+    AppTitleForm
   },
   props: {
     value: {
@@ -85,7 +82,6 @@ export default {
     return {
       icons,
       currentValues: createDefaultValues(),
-      titleMaxLength: trophy.title.max,
       descriptionMaxLength: trophy.description.max
     }
   },
