@@ -7,7 +7,7 @@
       <app-list-item
         :title="$t('HOME')"
         :icon="icons.home"
-        @click="toHome"
+        @click="onClickHomeButton"
       />
       <app-list-item
         :title="$t('TWITTER')"
@@ -42,6 +42,9 @@ export default {
     }
   },
   methods: {
+    onClickHomeButton () {
+      this.toHome()
+    },
     toHome () {
       this.$router.push(`/home`)
     },
