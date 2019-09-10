@@ -37,7 +37,7 @@
           <v-divider />
           <app-list-item
             :title="$t('LOG_OUT')"
-            @click="signOut"
+            @click="onClickLogOutMenu"
           />
         </v-list>
       </v-menu>
@@ -78,6 +78,9 @@ export default {
     },
     onClickAddIcon () {
       this.openCreateDialog()
+    },
+    onClickLogOutMenu () {
+      this.signOut()
     },
     toggleDrawer () {
       this.$store.commit('toggleDrawer')
