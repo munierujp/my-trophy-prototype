@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import Validator from '~/modules/Validator'
 import AppAchievedDateForm from '~/components/items/AppAchievedDateForm'
 import AppDescriptionForm from '~/components/items/AppDescriptionForm'
 import AppTitleForm from '~/components/items/AppTitleForm'
@@ -35,7 +36,7 @@ export default {
   props: {
     value: {
       type: Object,
-      validator: value => ['title', 'description', 'achievedOn'].every(key => value.hasOwnProperty(key)),
+      validator: value => Validator.of(value).hasOwnProperties('title', 'description', 'achievedOn'),
       required: true
     }
   },
