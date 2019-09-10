@@ -38,11 +38,7 @@
           </v-row>
           <v-row justify="center">
             <v-col class="app-col">
-              <app-date-form
-                v-model="currentValues.achievedOn"
-                :label="$t('ACHIEVED_DATE')"
-                required
-              />
+              <app-achieved-date-form v-model="currentValues.achievedOn" />
             </v-col>
           </v-row>
         </v-container>
@@ -53,15 +49,14 @@
 
 <script>
 import icons from '~/modules/icons'
-import { trophy } from '~/modules/models'
-import AppDateForm from '~/components/elements/AppDateForm'
+import AppAchievedDateForm from '~/components/items/AppAchievedDateForm'
 import AppDescriptionForm from '~/components/items/AppDescriptionForm'
 import AppIconButton from '~/components/elements/AppIconButton'
 import AppTitleForm from '~/components/items/AppTitleForm'
 
 export default {
   components: {
-    AppDateForm,
+    AppAchievedDateForm,
     AppDescriptionForm,
     AppIconButton,
     AppTitleForm
@@ -101,8 +96,7 @@ export default {
         title,
         description,
         achievedOn
-      },
-      descriptionMaxLength: trophy.description.max
+      }
     }
   },
   computed: {
