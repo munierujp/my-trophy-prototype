@@ -32,7 +32,7 @@
           <app-list-item
             :title="user.name"
             :subtitle="user.email"
-            @click="toMyPage"
+            @click="onClickUserMenu"
           />
           <v-divider />
           <app-list-item
@@ -78,6 +78,9 @@ export default {
     },
     onClickAddIcon () {
       this.openCreateDialog()
+    },
+    onClickUserMenu () {
+      this.toMyPage()
     },
     onClickLogOutMenu () {
       this.signOut()
