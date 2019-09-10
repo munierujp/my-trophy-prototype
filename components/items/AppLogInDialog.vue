@@ -48,13 +48,16 @@ export default {
     async onClickLogInButton () {
       await this.signIn()
       this.close()
-      this.$router.push('/home')
+      this.toHomePage()
     },
     async signIn () {
       await this.$store.dispatch('signIn')
     },
     close () {
       this.show = false
+    },
+    toHomePage () {
+      this.$router.push('/home')
     }
   }
 }
