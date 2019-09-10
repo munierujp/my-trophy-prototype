@@ -101,10 +101,13 @@ export default {
       this.openEditDialog()
     },
     onClickDeleteButton () {
-      this.showDeleteDialog = true
+      this.openDeleteDialog()
     },
     openEditDialog () {
       this.showEditDialog = true
+    },
+    openDeleteDialog () {
+      this.showDeleteDialog = true
     }
   }
 }
