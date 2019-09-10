@@ -13,7 +13,7 @@
       <v-spacer />
       <app-icon-button
         :icon="icons.add"
-        @click="openCreateDialog"
+        @click="onClickAddIcon"
       />
       <app-trophy-create-dialog v-model="showCreateDialog" />
       <v-menu
@@ -75,6 +75,9 @@ export default {
   methods: {
     onClickNavIcon () {
       this.toggleDrawer()
+    },
+    onClickAddIcon () {
+      this.openCreateDialog()
     },
     toggleDrawer () {
       this.$store.commit('toggleDrawer')
