@@ -26,7 +26,7 @@
           <v-row justify="center">
             <v-col class="app-col">
               <app-text-form
-                v-model="trophy.title"
+                v-model="inputValues.title"
                 :label="$t('TITLE')"
                 :max-length="titleMaxLength"
                 required
@@ -37,7 +37,7 @@
           <v-row justify="center">
             <v-col class="app-col">
               <app-textarea
-                v-model="trophy.description"
+                v-model="inputValues.description"
                 :label="$t('BODY')"
                 :max-length="descriptionMaxLength"
               />
@@ -46,7 +46,7 @@
           <v-row justify="center">
             <v-col class="app-col">
               <app-date-form
-                v-model="trophy.achievedOn"
+                v-model="inputValues.achievedOn"
                 :label="$t('ACHIEVED_DATE')"
                 required
               />
@@ -98,7 +98,7 @@ export default {
   data () {
     return {
       icons,
-      trophy: {
+      inputValues: {
         title: this.title,
         description: this.description,
         achievedOn: this.achievedOn
@@ -121,9 +121,9 @@ export default {
     },
     request () {
       return {
-        title: this.trophy.title,
-        description: this.trophy.description,
-        achieved_on: this.trophy.achievedOn
+        title: this.inputValues.title,
+        description: this.inputValues.description,
+        achieved_on: this.inputValues.achievedOn
       }
     }
   },
@@ -133,7 +133,7 @@ export default {
     },
     async onClickSaveButton () {
       await this.update()
-      this.$emit('update', this.trophy)
+      this.$emit('update', this.inputValues)
     },
     close () {
       this.show = false
