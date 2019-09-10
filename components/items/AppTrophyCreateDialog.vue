@@ -120,10 +120,11 @@ export default {
       this.close()
       this.clear()
     },
-    onClickSendButton () {
-      this.send()
+    async onClickSendButton () {
+      const trophy = await this.create()
       this.close()
       this.clear()
+      this.toTrophyPage(trophy.id)
     },
     close () {
       this.show = false
@@ -131,10 +132,13 @@ export default {
     clear () {
       this.trophy = defaultValue()
     },
-    async send () {
+    async create () {
       await this.api.createTrophy(this.request)
       const trophy = await this.api.fetchTrophiesByUserId(this.user.id).then(findNewestById)
-      this.$emit('create', trophy)
+      return trophy
+    },
+    toTrophyPage (id) {
+      this.$router.push(`/trophy/${id}`)
     }
   }
 }

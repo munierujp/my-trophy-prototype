@@ -15,10 +15,7 @@
         :icon="icons.add"
         @click="openCreateDialog"
       />
-      <app-trophy-create-dialog
-        v-model="showCreateDialog"
-        @create="onCreateTrophy"
-      />
+      <app-trophy-create-dialog v-model="showCreateDialog" />
       <v-menu
         bottom
         left
@@ -88,13 +85,6 @@ export default {
     },
     openCreateDialog () {
       this.showCreateDialog = true
-    },
-    closeCreateDialog () {
-      this.showCreateDialog = false
-    },
-    onCreateTrophy (trophy) {
-      this.$router.push(`/trophy/${trophy.id}`)
-      this.closeCreateDialog()
     }
   }
 }
