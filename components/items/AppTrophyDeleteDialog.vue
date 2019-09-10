@@ -58,6 +58,9 @@ export default {
   },
   methods: {
     onClickCancelButton () {
+      this.close()
+    },
+    close () {
       this.show = false
     },
     async deleteTrophy () {
