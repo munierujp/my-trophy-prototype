@@ -19,7 +19,7 @@
         <app-text-button
           :label="$t('DELETE')"
           color="red"
-          @click="deleteTrophy"
+          @click="onClickDeleteButton"
         />
       </v-card-actions>
     </v-card>
@@ -63,7 +63,7 @@ export default {
     close () {
       this.show = false
     },
-    async deleteTrophy () {
+    async onClickDeleteButton () {
       await this.api.deleteTrophy(this.id)
       this.close()
       this.$router.push('/home')
