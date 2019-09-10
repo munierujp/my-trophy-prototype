@@ -17,26 +17,7 @@
         />
       </v-toolbar>
       <v-card-text>
-        <v-container>
-          <v-row justify="center">
-            <v-col class="app-col">
-              <app-title-form
-                v-model="currentValues.title"
-                autofocus
-              />
-            </v-col>
-          </v-row>
-          <v-row justify="center">
-            <v-col class="app-col">
-              <app-description-form v-model="currentValues.description" />
-            </v-col>
-          </v-row>
-          <v-row justify="center">
-            <v-col class="app-col">
-              <app-achieved-date-form v-model="currentValues.achievedOn" />
-            </v-col>
-          </v-row>
-        </v-container>
+        <app-trophy-form v-model="currentValues" />
       </v-card-text>
     </v-card>
   </app-fullscreen-dialog>
@@ -44,19 +25,15 @@
 
 <script>
 import icons from '~/modules/icons'
-import AppAchievedDateForm from '~/components/items/AppAchievedDateForm'
-import AppDescriptionForm from '~/components/items/AppDescriptionForm'
 import AppFullscreenDialog from '~/components/elements/AppFullscreenDialog'
 import AppIconButton from '~/components/elements/AppIconButton'
-import AppTitleForm from '~/components/items/AppTitleForm'
+import AppTrophyForm from '~/components/items/AppTrophyForm'
 
 export default {
   components: {
-    AppAchievedDateForm,
-    AppDescriptionForm,
     AppFullscreenDialog,
     AppIconButton,
-    AppTitleForm
+    AppTrophyForm
   },
   props: {
     value: {
@@ -156,9 +133,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.app-col {
-  max-width: 600px;
-}
-</style>
