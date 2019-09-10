@@ -98,10 +98,13 @@ export default {
   },
   methods: {
     onClickEditButton () {
-      this.showEditDialog = true
+      this.openEditDialog()
     },
     onClickDeleteButton () {
       this.showDeleteDialog = true
+    },
+    openEditDialog () {
+      this.showEditDialog = true
     }
   }
 }
