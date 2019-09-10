@@ -5,7 +5,7 @@
     color="primary"
     dark
   >
-    <v-app-bar-nav-icon @click.stop="toggleDrawer" />
+    <v-app-bar-nav-icon @click.stop="onClickNavIcon" />
     <v-toolbar-title>
       {{ $t('APP_NAME') }}
     </v-toolbar-title>
@@ -73,6 +73,9 @@ export default {
     }
   },
   methods: {
+    onClickNavIcon () {
+      this.toggleDrawer()
+    },
     toggleDrawer () {
       this.$store.commit('toggleDrawer')
     },
