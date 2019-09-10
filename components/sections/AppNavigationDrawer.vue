@@ -12,7 +12,7 @@
       <app-list-item
         :title="$t('TWITTER')"
         :icon="icons.twitter"
-        @click="openTwitter"
+        @click="onClickTwitterButton"
       />
     </v-list>
   </v-navigation-drawer>
@@ -44,6 +44,9 @@ export default {
   methods: {
     onClickHomeButton () {
       this.toHome()
+    },
+    onClickTwitterButton () {
+      this.openTwitter()
     },
     toHome () {
       this.$router.push(`/home`)
