@@ -1,10 +1,5 @@
 <template>
-  <v-dialog
-    v-model="show"
-    fullscreen
-    hide-overlay
-    transition="dialog-bottom-transition"
-  >
+  <app-fullscreen-dialog v-model="show">
     <v-card>
       <v-toolbar
         color="primary"
@@ -44,7 +39,7 @@
         </v-container>
       </v-card-text>
     </v-card>
-  </v-dialog>
+  </app-fullscreen-dialog>
 </template>
 
 <script>
@@ -53,6 +48,7 @@ import icons from '~/modules/icons'
 import findNewestById from '~/modules/findNewestById'
 import AppAchievedDateForm from '~/components/items/AppAchievedDateForm'
 import AppDescriptionForm from '~/components/items/AppDescriptionForm'
+import AppFullscreenDialog from '~/components/elements/AppFullscreenDialog'
 import AppIconButton from '~/components/elements/AppIconButton'
 import AppTitleForm from '~/components/items/AppTitleForm'
 
@@ -60,6 +56,7 @@ export default {
   components: {
     AppAchievedDateForm,
     AppDescriptionForm,
+    AppFullscreenDialog,
     AppIconButton,
     AppTitleForm
   },
