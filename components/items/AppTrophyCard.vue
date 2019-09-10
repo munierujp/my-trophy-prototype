@@ -28,10 +28,9 @@
           <app-trophy-edit-dialog
             :id="id"
             v-model="showEditDialog"
-            :title="trophy.title"
-            :description="trophy.description"
-            :achieved-on="trophy.achievedOn"
-            @update="onUpdateTrophy"
+            :title.sync="trophy.title"
+            :description.sync="trophy.description"
+            :achieved-on.sync="trophy.achievedOn"
           />
           <app-icon-button
             :icon="icons.delete"
@@ -103,10 +102,6 @@ export default {
     },
     onClickDeleteButton () {
       this.showDeleteDialog = true
-    },
-    onUpdateTrophy (trophy) {
-      this.trophy = trophy
-      this.showEditDialog = false
     }
   }
 }

@@ -139,7 +139,10 @@ export default {
     },
     async onClickSaveButton () {
       await this.update()
-      this.$emit('update', this.currentValues)
+      this.$emit('update:title', this.currentValues.title)
+      this.$emit('update:description', this.currentValues.description)
+      this.$emit('update:achievedOn', this.currentValues.achievedOn)
+      this.close()
     },
     close () {
       this.show = false
