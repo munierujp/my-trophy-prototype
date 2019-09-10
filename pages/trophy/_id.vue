@@ -17,7 +17,7 @@
         :description="trophy.description"
         :achieved-on="trophy.achievedOn"
         :writable="writable"
-        width="640px"
+        :width="width"
       />
     </v-flex>
   </v-layout>
@@ -34,7 +34,8 @@ export default {
     AppUserTag
   },
   data: () => ({
-    icons
+    icons,
+    width: '600px'
   }),
   computed: {
     isSignedIn () {

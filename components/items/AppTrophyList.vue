@@ -11,7 +11,7 @@
       <app-trophy-list-item
         :to="`/trophy/${trophy.id}`"
         :title="trophy.title"
-        width="320px"
+        :width="width"
       />
     </v-flex>
     <!-- dummy components for layout (align left) -->
@@ -38,12 +38,17 @@ export default {
       type: Array,
       required: true
     }
+  },
+  data () {
+    return {
+      width: '480px'
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-$trophy-card-width: 320px;
+$trophy-card-width: 480px;
 
 .app-trophy {
   flex-grow: 0;

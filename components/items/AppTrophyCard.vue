@@ -13,7 +13,7 @@
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="grey--text">
-            {{ trophy.achievedOn }}
+            {{ trophy.achievedOn | formatDate }}
           </v-list-item-title>
         </v-list-item-content>
         <v-row
@@ -47,6 +47,7 @@
 </template>
 
 <script>
+import { DateTime } from 'luxon'
 import icons from '~/modules/icons'
 import AppIconButton from '~/components/elements/AppIconButton'
 import AppTrophyDeleteDialog from '~/components/items/AppTrophyDeleteDialog'
@@ -57,6 +58,11 @@ export default {
     AppIconButton,
     AppTrophyDeleteDialog,
     AppTrophyEditDialog
+  },
+  filters: {
+    formatDate (date) {
+      return DateTime.fromISO(date).toFormat('yyyy/M/d')
+    }
   },
   props: {
     writable: {

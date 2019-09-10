@@ -17,7 +17,7 @@
 
 <script>
 import icons from '~/modules/icons'
-import sortByIdDesc from '~/modules/sortByIdDesc'
+import sortByAchievedDateDesc from '~/modules/sortByAchievedDateDesc'
 import AppTrophyList from '~/components/items/AppTrophyList'
 import AppUserTag from '~/components/items/AppUserTag'
 
@@ -35,7 +35,7 @@ export default {
     if (!user) {
       throw new Error('User not found')
     }
-    const trophies = await api.fetchTrophiesByUserId(user.id).then(sortByIdDesc)
+    const trophies = await api.fetchTrophiesByUserId(user.id).then(sortByAchievedDateDesc)
     return {
       user,
       trophies
