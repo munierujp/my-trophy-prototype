@@ -118,18 +118,18 @@ export default {
   methods: {
     onClickCloseButton () {
       this.close()
-      this.clear()
+      this.resetCurrentValues()
     },
     async onClickSendButton () {
       const trophy = await this.create()
       this.close()
-      this.clear()
+      this.resetCurrentValues()
       this.toTrophyPage(trophy.id)
     },
     close () {
       this.show = false
     },
-    clear () {
+    resetCurrentValues () {
       this.currentValues = createDefaultValues()
     },
     async create () {
