@@ -33,11 +33,7 @@
           </v-row>
           <v-row justify="center">
             <v-col class="app-col">
-              <app-textarea
-                v-model="currentValues.description"
-                :label="$t('BODY')"
-                :max-length="descriptionMaxLength"
-              />
+              <app-description-form v-model="currentValues.description" />
             </v-col>
           </v-row>
           <v-row justify="center">
@@ -61,15 +57,15 @@ import icons from '~/modules/icons'
 import findNewestById from '~/modules/findNewestById'
 import { trophy } from '~/modules/models'
 import AppDateForm from '~/components/elements/AppDateForm'
+import AppDescriptionForm from '~/components/items/AppDescriptionForm'
 import AppIconButton from '~/components/elements/AppIconButton'
-import AppTextarea from '~/components/elements/AppTextarea'
 import AppTitleForm from '~/components/items/AppTitleForm'
 
 export default {
   components: {
     AppDateForm,
+    AppDescriptionForm,
     AppIconButton,
-    AppTextarea,
     AppTitleForm
   },
   props: {
