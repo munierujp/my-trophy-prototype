@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import sortByIdDesc from '~/modules/sortByIdDesc'
+import sortByAchievedDateDesc from '~/modules/sortByAchievedDateDesc'
 import AppTrophyList from '~/components/items/AppTrophyList'
 
 export default {
@@ -20,7 +20,7 @@ export default {
   },
   async asyncData ({ store }) {
     const { api, auth } = store.state
-    const trophies = await api.fetchTrophiesByUserId(auth.user.id).then(sortByIdDesc)
+    const trophies = await api.fetchTrophiesByUserId(auth.user.id).then(sortByAchievedDateDesc)
     return {
       trophies
     }
