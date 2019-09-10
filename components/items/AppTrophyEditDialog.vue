@@ -139,14 +139,23 @@ export default {
       this.resetCurrentValues()
     },
     async onClickSaveButton () {
-      await this.update()
-      this.$emit('update:title', this.currentValues.title)
-      this.$emit('update:description', this.currentValues.description)
-      this.$emit('update:achievedOn', this.currentValues.achievedOn)
+      const trophy = await this.update()
+      this.$emit('update:title', trophy.title)
+      this.$emit('update:description', trophy.description)
+      this.$emit('update:achievedOn', trophy.achievedOn)
       this.close()
+      this.updateInitialValues(trophy)
+      this.resetCurrentValues()
     },
     close () {
       this.show = false
+    },
+    updateInitialValues ({ title, description, achievedOn }) {
+      this.initialValues = {
+        title,
+        description,
+        achievedOn
+      }
     },
     resetCurrentValues () {
       this.currentValues.title = this.initialValues.title
@@ -155,6 +164,8 @@ export default {
     },
     async update () {
       await this.api.updateTrophy(this.id, this.request)
+      const trophy = await this.api.fetchTrophyById(this.id)
+      return trophy
     }
   }
 }
