@@ -48,8 +48,11 @@ export default {
       if (this.isSignedIn) {
         this.toHomePage()
       } else {
-        this.showLogInDialog = true
+        this.openLogInDialog()
       }
+    },
+    openLogInDialog () {
+      this.showLogInDialog = true
     },
     toHomePage () {
       this.$router.push('/home')
