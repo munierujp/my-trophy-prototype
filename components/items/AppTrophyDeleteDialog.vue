@@ -14,7 +14,7 @@
         <v-spacer />
         <app-text-button
           :label="$t('CANCEL')"
-          @click="close"
+          @click="onClickCancelButton"
         />
         <app-text-button
           :label="$t('DELETE')"
@@ -57,7 +57,7 @@ export default {
     }
   },
   methods: {
-    close () {
+    onClickCancelButton () {
       this.show = false
     },
     async deleteTrophy () {
