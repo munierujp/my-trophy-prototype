@@ -132,11 +132,14 @@ export default {
       this.close()
     },
     async onClickSaveButton () {
-      await this.api.updateTrophy(this.id, this.request)
+      await this.update()
       this.$emit('update', this.trophy)
     },
     close () {
       this.show = false
+    },
+    async update () {
+      await this.api.updateTrophy(this.id, this.request)
     }
   }
 }
