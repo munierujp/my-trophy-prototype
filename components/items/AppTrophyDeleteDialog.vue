@@ -60,13 +60,16 @@ export default {
     onClickCancelButton () {
       this.close()
     },
+    async onClickDeleteButton () {
+      await this.deleteTrophy()
+      this.close()
+      this.$router.push('/home')
+    },
     close () {
       this.show = false
     },
-    async onClickDeleteButton () {
+    async deleteTrophy () {
       await this.api.deleteTrophy(this.id)
-      this.close()
-      this.$router.push('/home')
     }
   }
 }
