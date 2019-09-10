@@ -63,13 +63,16 @@ export default {
     async onClickDeleteButton () {
       await this.deleteTrophy()
       this.close()
-      this.$router.push('/home')
+      this.toHomePage()
     },
     close () {
       this.show = false
     },
     async deleteTrophy () {
       await this.api.deleteTrophy(this.id)
+    },
+    toHomePage () {
+      this.$router.push('/home')
     }
   }
 }
