@@ -46,10 +46,13 @@ export default {
   methods: {
     onClickStartButton () {
       if (this.isSignedIn) {
-        this.$router.push('/home')
+        this.toHomePage()
       } else {
         this.showLogInDialog = true
       }
+    },
+    toHomePage () {
+      this.$router.push('/home')
     }
   }
 }
