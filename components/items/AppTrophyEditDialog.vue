@@ -12,13 +12,13 @@
       >
         <app-icon-button
           :icon="icons.close"
-          @click="close"
+          @click="onClickCloseButton"
         />
         <v-toolbar-title>{{ $t('EDIT') }}</v-toolbar-title>
         <v-spacer />
         <app-icon-button
           :icon="icons.save"
-          @click="save"
+          @click="onClickSaveButton"
         />
       </v-toolbar>
       <v-card-text>
@@ -26,7 +26,7 @@
           <v-row justify="center">
             <v-col class="app-col">
               <app-text-form
-                v-model="trophy.title"
+                v-model="currentValues.title"
                 :label="$t('TITLE')"
                 :max-length="titleMaxLength"
                 required
@@ -37,7 +37,7 @@
           <v-row justify="center">
             <v-col class="app-col">
               <app-textarea
-                v-model="trophy.description"
+                v-model="currentValues.description"
                 :label="$t('BODY')"
                 :max-length="descriptionMaxLength"
               />
@@ -46,7 +46,7 @@
           <v-row justify="center">
             <v-col class="app-col">
               <app-date-form
-                v-model="trophy.achievedOn"
+                v-model="currentValues.achievedOn"
                 :label="$t('ACHIEVED_DATE')"
                 required
               />
@@ -96,12 +96,18 @@ export default {
     }
   },
   data () {
+    const { title, description, achievedOn } = this
     return {
       icons,
-      trophy: {
-        title: this.title,
-        description: this.description,
-        achievedOn: this.achievedOn
+      initialValues: {
+        title,
+        description,
+        achievedOn
+      },
+      currentValues: {
+        title,
+        description,
+        achievedOn
       },
       titleMaxLength: trophy.title.max,
       descriptionMaxLength: trophy.description.max
@@ -121,19 +127,48 @@ export default {
     },
     request () {
       return {
-        title: this.trophy.title,
-        description: this.trophy.description,
-        achieved_on: this.trophy.achievedOn
+        title: this.currentValues.title,
+        description: this.currentValues.description,
+        achieved_on: this.currentValues.achievedOn
       }
     }
   },
   methods: {
+    onClickCloseButton () {
+      this.close()
+      this.resetCurrentValues()
+    },
+    async onClickSaveButton () {
+      const trophy = await this.update()
+      this.emitUpdateEvents(trophy)
+      this.close()
+      this.updateInitialValues(trophy)
+      this.resetCurrentValues()
+    },
     close () {
       this.show = false
     },
-    async save () {
+    resetCurrentValues () {
+      this.currentValues.title = this.initialValues.title
+      this.currentValues.description = this.initialValues.description
+      this.currentValues.achievedOn = this.initialValues.achievedOn
+    },
+    async update () {
       await this.api.updateTrophy(this.id, this.request)
-      this.$emit('update', this.trophy)
+      const trophy = await this.api.fetchTrophyById(this.id)
+      return trophy
+    },
+    emitUpdateEvents ({ title, description, achievedOn }) {
+      this.$emit('update:title', title)
+      this.$emit('update:description', description)
+      this.$emit('update:achievedOn', achievedOn)
+    },
+    updateInitialValues ({ title, description, achievedOn }) {
+      this.initialValues = {
+        title,
+        description,
+        achievedOn
+      }
     }
   }
 }

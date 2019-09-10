@@ -14,12 +14,12 @@
         <v-spacer />
         <app-text-button
           :label="$t('CANCEL')"
-          @click="close"
+          @click="onClickCancelButton"
         />
         <app-text-button
           :label="$t('DELETE')"
           color="red"
-          @click="deleteTrophy"
+          @click="onClickDeleteButton"
         />
       </v-card-actions>
     </v-card>
@@ -57,12 +57,21 @@ export default {
     }
   },
   methods: {
+    onClickCancelButton () {
+      this.close()
+    },
+    async onClickDeleteButton () {
+      await this.deleteTrophy()
+      this.close()
+      this.toHomePage()
+    },
     close () {
       this.show = false
     },
     async deleteTrophy () {
       await this.api.deleteTrophy(this.id)
-      this.close()
+    },
+    toHomePage () {
       this.$router.push('/home')
     }
   }

@@ -12,13 +12,13 @@
       >
         <app-icon-button
           :icon="icons.close"
-          @click="close"
+          @click="onClickCloseButton"
         />
         <v-toolbar-title>{{ $t('CREATE_NEW_TROPHY') }}</v-toolbar-title>
         <v-spacer />
         <app-icon-button
           :icon="icons.send"
-          @click="send"
+          @click="onClickSendButton"
         />
       </v-toolbar>
       <v-card-text>
@@ -26,7 +26,7 @@
           <v-row justify="center">
             <v-col class="app-col">
               <app-text-form
-                v-model="trophy.title"
+                v-model="currentValues.title"
                 :label="$t('TITLE')"
                 :max-length="titleMaxLength"
                 required
@@ -37,7 +37,7 @@
           <v-row justify="center">
             <v-col class="app-col">
               <app-textarea
-                v-model="trophy.description"
+                v-model="currentValues.description"
                 :label="$t('BODY')"
                 :max-length="descriptionMaxLength"
               />
@@ -46,7 +46,7 @@
           <v-row justify="center">
             <v-col class="app-col">
               <app-date-form
-                v-model="trophy.achievedOn"
+                v-model="currentValues.achievedOn"
                 :label="$t('ACHIEVED_DATE')"
                 required
               />
@@ -84,11 +84,7 @@ export default {
   data () {
     return {
       icons,
-      trophy: {
-        title: '',
-        description: '',
-        achievedOn: DateTime.local().toISODate()
-      },
+      currentValues: createDefaultValues(),
       titleMaxLength: trophy.title.max,
       descriptionMaxLength: trophy.description.max
     }
@@ -113,22 +109,45 @@ export default {
     },
     request () {
       return {
-        title: this.trophy.title,
-        description: this.trophy.description,
-        achieved_on: this.trophy.achievedOn
+        title: this.currentValues.title,
+        description: this.currentValues.description,
+        achieved_on: this.currentValues.achievedOn
       }
     }
   },
   methods: {
+    onClickCloseButton () {
+      this.close()
+      this.resetCurrentValues()
+    },
+    async onClickSendButton () {
+      const trophy = await this.create()
+      this.close()
+      this.resetCurrentValues()
+      this.toTrophyPage(trophy.id)
+    },
     close () {
       this.show = false
     },
-    async send () {
+    resetCurrentValues () {
+      this.currentValues = createDefaultValues()
+    },
+    async create () {
       await this.api.createTrophy(this.request)
       const trophy = await this.api.fetchTrophiesByUserId(this.user.id).then(findNewestById)
-      this.$emit('create', trophy)
-      this.close()
+      return trophy
+    },
+    toTrophyPage (id) {
+      this.$router.push(`/trophy/${id}`)
     }
+  }
+}
+
+function createDefaultValues () {
+  return {
+    title: '',
+    description: '',
+    achievedOn: DateTime.local().toISODate()
   }
 }
 </script>

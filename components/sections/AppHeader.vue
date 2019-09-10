@@ -5,7 +5,7 @@
     color="primary"
     dark
   >
-    <v-app-bar-nav-icon @click.stop="toggleDrawer" />
+    <v-app-bar-nav-icon @click.stop="onClickNavIcon" />
     <v-toolbar-title>
       {{ $t('APP_NAME') }}
     </v-toolbar-title>
@@ -13,12 +13,9 @@
       <v-spacer />
       <app-icon-button
         :icon="icons.add"
-        @click="openCreateDialog"
+        @click="onClickAddIcon"
       />
-      <app-trophy-create-dialog
-        v-model="showCreateDialog"
-        @create="onCreateTrophy"
-      />
+      <app-trophy-create-dialog v-model="showCreateDialog" />
       <v-menu
         bottom
         left
@@ -35,12 +32,12 @@
           <app-list-item
             :title="user.name"
             :subtitle="user.email"
-            @click="toMyPage"
+            @click="onClickUserMenu"
           />
           <v-divider />
           <app-list-item
             :title="$t('LOG_OUT')"
-            @click="signOut"
+            @click="onClickLogOutMenu"
           />
         </v-list>
       </v-menu>
@@ -76,6 +73,18 @@ export default {
     }
   },
   methods: {
+    onClickNavIcon () {
+      this.toggleDrawer()
+    },
+    onClickAddIcon () {
+      this.openCreateDialog()
+    },
+    onClickUserMenu () {
+      this.toMyPage()
+    },
+    onClickLogOutMenu () {
+      this.signOut()
+    },
     toggleDrawer () {
       this.$store.commit('toggleDrawer')
     },
@@ -88,13 +97,6 @@ export default {
     },
     openCreateDialog () {
       this.showCreateDialog = true
-    },
-    closeCreateDialog () {
-      this.showCreateDialog = false
-    },
-    onCreateTrophy (trophy) {
-      this.$router.push(`/trophy/${trophy.id}`)
-      this.closeCreateDialog()
     }
   }
 }

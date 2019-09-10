@@ -1,5 +1,5 @@
 <template>
-  <v-list-item @click="click">
+  <v-list-item @click="onClick">
     <v-list-item-icon v-if="icon">
       <v-icon>{{ icon }}</v-icon>
     </v-list-item-icon>
@@ -29,7 +29,7 @@ export default {
     }
   },
   methods: {
-    click (e) {
+    onClick (e) {
       this.$emit('click', e)
     }
   }
