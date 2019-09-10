@@ -136,6 +136,7 @@ export default {
   methods: {
     onClickCloseButton () {
       this.close()
+      this.resetCurrentValues()
     },
     async onClickSaveButton () {
       await this.update()
