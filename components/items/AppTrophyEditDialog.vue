@@ -96,12 +96,18 @@ export default {
     }
   },
   data () {
+    const { title, description, achievedOn } = this
     return {
       icons,
+      initialValues: {
+        title,
+        description,
+        achievedOn
+      },
       inputValues: {
-        title: this.title,
-        description: this.description,
-        achievedOn: this.achievedOn
+        title,
+        description,
+        achievedOn
       },
       titleMaxLength: trophy.title.max,
       descriptionMaxLength: trophy.description.max
