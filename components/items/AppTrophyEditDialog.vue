@@ -147,6 +147,11 @@ export default {
     close () {
       this.show = false
     },
+    resetCurrentValues () {
+      this.currentValues.title = this.initialValues.title
+      this.currentValues.description = this.initialValues.description
+      this.currentValues.achievedOn = this.initialValues.achievedOn
+    },
     async update () {
       await this.api.updateTrophy(this.id, this.request)
     }
