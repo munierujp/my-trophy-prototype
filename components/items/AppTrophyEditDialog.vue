@@ -26,7 +26,7 @@
           <v-row justify="center">
             <v-col class="app-col">
               <app-text-form
-                v-model="inputValues.title"
+                v-model="currentValues.title"
                 :label="$t('TITLE')"
                 :max-length="titleMaxLength"
                 required
@@ -37,7 +37,7 @@
           <v-row justify="center">
             <v-col class="app-col">
               <app-textarea
-                v-model="inputValues.description"
+                v-model="currentValues.description"
                 :label="$t('BODY')"
                 :max-length="descriptionMaxLength"
               />
@@ -46,7 +46,7 @@
           <v-row justify="center">
             <v-col class="app-col">
               <app-date-form
-                v-model="inputValues.achievedOn"
+                v-model="currentValues.achievedOn"
                 :label="$t('ACHIEVED_DATE')"
                 required
               />
@@ -104,7 +104,7 @@ export default {
         description,
         achievedOn
       },
-      inputValues: {
+      currentValues: {
         title,
         description,
         achievedOn
@@ -127,9 +127,9 @@ export default {
     },
     request () {
       return {
-        title: this.inputValues.title,
-        description: this.inputValues.description,
-        achieved_on: this.inputValues.achievedOn
+        title: this.currentValues.title,
+        description: this.currentValues.description,
+        achieved_on: this.currentValues.achievedOn
       }
     }
   },
@@ -139,7 +139,7 @@ export default {
     },
     async onClickSaveButton () {
       await this.update()
-      this.$emit('update', this.inputValues)
+      this.$emit('update', this.currentValues)
     },
     close () {
       this.show = false
