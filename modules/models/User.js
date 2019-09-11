@@ -2,7 +2,7 @@ class User {
   constructor (id, createdAt, updatedAt, deletedAt, name, email) {
     this.id = id
     this.createdAt = createdAt
-    this.iupdatedAtd = updatedAt
+    this.updatedAtd = updatedAt
     this.deletedAt = deletedAt
     this.name = name
     this.email = email
