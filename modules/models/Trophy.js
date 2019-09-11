@@ -2,7 +2,7 @@ class Trophy {
   constructor (id, createdAt, updatedAt, deletedAt, title, description, achievedOn, userId) {
     this.id = id
     this.createdAt = createdAt
-    this.iupdatedAtd = updatedAt
+    this.updatedAtd = updatedAt
     this.deletedAt = deletedAt
     this.title = title
     this.description = description
