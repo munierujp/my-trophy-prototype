@@ -30,7 +30,7 @@
     "@nuxtjs/eslint-module": "1.2.0",
     "@nuxtjs/stylelint-module": "github:munierujp/stylelint-module#fix_spa_mode",
     "@nuxtjs/vuetify": "1.11.2",
-    "babel-eslint": "10.0.3",
+    "babel-eslint": "10.1.0",
     "eslint": "6.8.0",
     "eslint-plugin-nuxt": "0.4.3",
     "firebase": "6.5.0",
