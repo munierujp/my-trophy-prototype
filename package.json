@@ -39,7 +39,7 @@
     "luxon": "1.17.2",
     "node-sass": "4.12.0",
     "nuxt-client-init-module": "0.1.5",
-    "nuxt-i18n": "6.1.1",
+    "nuxt-i18n": "6.14.2",
     "sass-loader": "7.3.1",
     "stylelint": "10.1.0",
     "stylelint-config-standard": "18.3.0",
