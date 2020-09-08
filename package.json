@@ -29,7 +29,7 @@
     "@nuxtjs/eslint-config": "1.1.2",
     "@nuxtjs/eslint-module": "1.0.0",
     "@nuxtjs/stylelint-module": "github:munierujp/stylelint-module#fix_spa_mode",
-    "@nuxtjs/vuetify": "1.5.0",
+    "@nuxtjs/vuetify": "1.11.2",
     "babel-eslint": "10.0.3",
     "eslint": "6.2.2",
     "eslint-plugin-nuxt": "0.4.3",
