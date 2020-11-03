@@ -29,7 +29,7 @@ class MyTrophyApi {
     const params = {
       email
     }
-    const users = await this.api.get('/users/', params)
+    const users = await this.api.get('/users', params)
     return Val.of(users)
       .filter(users => users.length)
       .map(users => users[0])
@@ -41,12 +41,12 @@ class MyTrophyApi {
     const params = {
       user_id: userId
     }
-    const trophies = await this.api.get('/trophies/', params).then(trophies => trophies.map(Trophy.fromResponse))
+    const trophies = await this.api.get('/trophies', params).then(trophies => trophies.map(Trophy.fromResponse))
     return trophies
   }
 
   async createUser () {
-    await this.api.post('/users/')
+    await this.api.post('/users')
   }
 
   async fetchTrophyById (id) {
@@ -55,7 +55,7 @@ class MyTrophyApi {
   }
 
   async createTrophy (trophy) {
-    await this.api.post('/trophies/', trophy)
+    await this.api.post('/trophies', trophy)
   }
 
   async updateTrophy (id, trophy) {
